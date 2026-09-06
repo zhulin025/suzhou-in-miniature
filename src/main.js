@@ -1,9 +1,12 @@
 import * as THREE from 'three';
+import { inject } from '@vercel/analytics';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { createIcons, ArrowUpRight, VolumeX, Volume2, Sun, Moon, Play, Pause, Scan, Plus, Minus, Rotate3d, MapPin, Camera, Expand, Compass, Globe, Waves, Flower2, Landmark, Building2, Mountain, Mouse, MoveVertical, Hand, Footprints, ArrowUp, ArrowLeft, ArrowDown, ArrowRight, X } from 'lucide';
 import { buildWorld, places } from './world.js';
 import './style.css';
+
+inject();
 
 const icons={ArrowUpRight,VolumeX,Volume2,Sun,Moon,Play,Pause,Scan,Plus,Minus,Rotate3d,MapPin,Camera,Expand,Compass,Globe,Waves,Flower2,Landmark,Building2,Mountain,Mouse,MoveVertical,Hand,Footprints,ArrowUp,ArrowLeft,ArrowDown,ArrowRight,X};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)], icon=(name,cls='')=>`<i data-lucide="${name}" class="${cls}"></i>`;
