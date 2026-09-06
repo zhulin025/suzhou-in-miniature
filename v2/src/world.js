@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+const DATA_BASE=`${import.meta.env.BASE_URL}data/`;
 import {buildLandmarks} from './landmarks.js';
 async function fetchBytes(url){
  const res=await fetch(url);if(!res.ok)throw new Error(`数据加载失败 ${res.status}: ${url}`);
@@ -26,7 +27,7 @@ function polygonGeometry(polygons,y){
 function ribbons(lines,widthFn,yFn){const p=[],idx=[];for(const l of lines){const w=widthFn(l)/2,y=yFn(l);for(let i=1;i<l.p.length;i++){const a=l.p[i-1],b=l.p[i],dx=b[0]-a[0],dz=b[1]-a[1],len=Math.hypot(dx,dz);if(len<.1)continue;const nx=-dz/len*w,nz=dx/len*w,j=p.length/3;p.push(a[0]+nx,y,a[1]+nz,a[0]-nx,y,a[1]-nz,b[0]-nx,y,b[1]-nz,b[0]+nx,y,b[1]+nz);idx.push(j,j+2,j+1,j,j+3,j+2);}}
  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));g.setIndex(idx);g.computeVertexNormals();g.computeBoundingSphere();return g;}
 export async function buildWorld(scene,materials,onProgress){
- const [manifest,landscape,replacements]=await Promise.all([getJSON('/data/manifest.json'),getJSON('/data/landscape.json.gz'),getJSON('/data/landmark-footprints.json')]);
+ const [manifest,landscape,replacements]=await Promise.all([getJSON(DATA_BASE+'manifest.json'),getJSON(DATA_BASE+'landscape.json.gz'),getJSON(DATA_BASE+'landmark-footprints.json')]);
  const root=new THREE.Group();scene.add(root);const tiles=[];const layers={buildings:new THREE.Group(),water:new THREE.Group(),green:new THREE.Group(),roads:new THREE.Group()};Object.values(layers).forEach(g=>root.add(g));
  function add(g,mat,parent= root){const m=new THREE.Mesh(g,mat);m.receiveShadow=true;parent.add(m);return m;}
  for(const [i,m] of [materials.ground,materials.green,materials.water,materials.roads,materials.highways].entries()){m.polygonOffset=true;m.polygonOffsetFactor=-i;m.polygonOffsetUnits=-i;}
@@ -49,7 +50,7 @@ export async function buildWorld(scene,materials,onProgress){
  let loaded=0,completed=0;const ordered=[...manifest.tiles].sort((a,b)=>Math.hypot(a.origin[0],a.origin[1])-Math.hypot(b.origin[0],b.origin[1]));
  onProgress(0,manifest.buildingCount,'正在展开真实建筑轮廓');
  let cursor=0;
- const workers=Array.from({length:5},async()=>{while(cursor<ordered.length){const tile=ordered[cursor++];const geometry=await getGeometry('/data/tiles/'+tile.id+'.bin.gz');const mesh=new THREE.Mesh(geometry,materials.buildings);mesh.position.set(tile.origin[0],0,tile.origin[1]);mesh.castShadow=true;mesh.receiveShadow=true;mesh.userData=tile;layers.buildings.add(mesh);tiles.push(mesh);loaded+=tile.count;completed++;onProgress(loaded,manifest.buildingCount,`已展开 ${completed} / ${ordered.length} 个城市分块`);if(completed%8===0)await new Promise(resolve=>setTimeout(resolve,0));}});
+ const workers=Array.from({length:5},async()=>{while(cursor<ordered.length){const tile=ordered[cursor++];const geometry=await getGeometry(DATA_BASE+'tiles/'+tile.id+'.bin.gz');const mesh=new THREE.Mesh(geometry,materials.buildings);mesh.position.set(tile.origin[0],0,tile.origin[1]);mesh.castShadow=true;mesh.receiveShadow=true;mesh.userData=tile;layers.buildings.add(mesh);tiles.push(mesh);loaded+=tile.count;completed++;onProgress(loaded,manifest.buildingCount,`已展开 ${completed} / ${ordered.length} 个城市分块`);if(completed%8===0)await new Promise(resolve=>setTimeout(resolve,0));}});
  await Promise.all(workers);
  return{root,layers,tiles,manifest,landscape,landmarks:marks,ground,loaded,
   update(n,time,distance,quality){materials.update(n,time);marks.update(n);minorMesh.visible=distance<(quality==='high'?65000:36000);railMesh.visible=distance<85000;},
