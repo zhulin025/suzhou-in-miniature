@@ -1,0 +1,111 @@
+{
+  "date": "2026-09-06T14:11:35.265Z",
+  "checks": [
+    "WebGL scene ready without errors",
+    "Orbit drag changes viewpoint",
+    "Wheel zoom approaches the target",
+    "Home button returns to full view",
+    "Day / night changes lights and interface",
+    "Landmark navigation: pingjiang",
+    "Landmark navigation: garden",
+    "Landmark navigation: tiger",
+    "Landmark navigation: lake",
+    "Landmark navigation: taihu",
+    "Geometry and water normal diagnostic controls",
+    "Labels can be hidden and restored",
+    "Scene screenshot downloads a valid PNG",
+    "Walking movement and mouse look",
+    "Water and building collisions, bridge and garden access",
+    "Walking over a bridge follows its curved surface",
+    "Escape restores orbit controls",
+    "Guided tour advances and can be paused",
+    "About dialog supports focus and Escape",
+    "High quality and far camera remain renderable",
+    "Alternate procedural seed remains renderable",
+    "Mobile layout and touch walking controls",
+    "No browser or shader errors across all modes",
+    "Final mobile FOV and POI hover/click check",
+    "Garden walk starts inside garden",
+    "Deterministic temporal frames t=0,12,24"
+  ],
+  "failures": [],
+  "errors": [],
+  "metrics": [
+    {
+      "seed": 310528,
+      "three": "180",
+      "backend": "WebGL2",
+      "quality": "standard",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "dpr": 1,
+      "place": "all",
+      "time": 0,
+      "night": 0,
+      "walk": false,
+      "camera": [
+        225,
+        195.99999999999997,
+        273
+      ],
+      "target": [
+        0,
+        1,
+        0
+      ],
+      "calls": 90,
+      "triangles": 569458,
+      "geometries": 71,
+      "textures": 3,
+      "rafFrameMs": 20.65,
+      "cpuSubmitMs": 1.07,
+      "gpuMs": null,
+      "postprocessing": "none",
+      "renderTargets": [
+        "environment PMREM cubeUV",
+        "directional shadow map"
+      ],
+      "errors": []
+    },
+    {
+      "seed": 310528,
+      "three": "180",
+      "backend": "WebGL2",
+      "quality": "high",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "dpr": 1,
+      "place": "garden",
+      "time": 0,
+      "night": 0,
+      "walk": false,
+      "camera": [
+        233.1919535716061,
+        195.94847318586278,
+        275.16650521449526
+      ],
+      "target": [
+        0,
+        1,
+        0
+      ],
+      "calls": 90,
+      "triangles": 569458,
+      "geometries": 71,
+      "textures": 3,
+      "rafFrameMs": 16.67,
+      "cpuSubmitMs": 0.51,
+      "gpuMs": null,
+      "postprocessing": "none",
+      "renderTargets": [
+        "environment PMREM cubeUV",
+        "directional shadow map"
+      ],
+      "errors": []
+    }
+  ]
+}
