@@ -1,0 +1,38 @@
+[
+  {
+    "id": "w206069300",
+    "name": "虎丘塔（云岩寺塔）",
+    "x": -7008.5,
+    "z": -4214.4,
+    "h": 48,
+    "tags": {
+      "building": "temple",
+      "height": "48",
+      "historic": "ruins",
+      "name": "虎丘塔（云岩寺塔）",
+      "name:en": "Tiger Hill Tower (Yunyan Temple Tower)",
+      "name:fr": "Pagode de la colline du tigre",
+      "wikidata": "Q1581102",
+      "wikimedia_commons": "Category:Yunyan Pagoda",
+      "wikipedia": "en:Tiger Hill Pagoda"
+    }
+  },
+  {
+    "id": "w477238586",
+    "name": "苏州国际金融中心",
+    "x": 5959.4,
+    "z": -2682.8,
+    "h": 450,
+    "tags": {
+      "building": "yes",
+      "building:levels": "95",
+      "check_date": "2021-04-22",
+      "height": "450",
+      "name": "苏州国际金融中心",
+      "name:en": "Suzhou IFS",
+      "wikidata": "Q617082",
+      "wikimedia_commons": "Category:Suzhou IFS",
+      "wikipedia": "en:Suzhou IFS"
+    }
+  }
+]

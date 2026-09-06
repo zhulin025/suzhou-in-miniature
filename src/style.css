@@ -10,3 +10,4 @@
 @media(max-width:1050px){.detail-view #app:before{width:330px}}
 @media(max-width:760px){.detail-view #app:before{inset:72px 0 auto 0;width:100%;height:245px;background:linear-gradient(180deg,#edf1e9ed,#edf1e900)}.detail-view.night #app:before{background:linear-gradient(180deg,#162e35ed,#162e3500)}}
 .poi:hover{transform:translate(-50%,-50%);background:#e2eadb}.night .poi:hover{background:#476650}
+.version-link{display:flex;align-items:center;gap:6px;padding:8px 11px;border:1px solid var(--line);border-radius:20px;font-size:10px;letter-spacing:.8px;white-space:nowrap;background:var(--paper)}.version-link svg{width:12px;height:12px}@media(max-width:760px){.version-link{padding:7px 9px;font-size:9px}.version-link svg{display:none}}

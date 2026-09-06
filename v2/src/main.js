@@ -1,0 +1,147 @@
+import * as THREE from 'three';
+import {inject} from '@vercel/analytics';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+import {createIcons,Search,Sun,Moon,Plus,Minus,Rotate3d,MapPin,Layers,Scan,ArrowUpRight,X,Camera,Info,Compass,ChevronRight,Building2,Waves,Trees,Route,Maximize,LocateFixed,Move,MousePointer2,ChevronDown,Check} from 'lucide';
+import {createMaterials} from './materials.js';
+import {buildWorld,getJSON} from './world.js';
+import {landmarks} from './landmarks.js';
+import {regions,unproject,project} from './geo.js';
+import './style.css';
+inject();
+const icons={Search,Sun,Moon,Plus,Minus,Rotate3d,MapPin,Layers,Scan,ArrowUpRight,X,Camera,Info,Compass,ChevronRight,Building2,Waves,Trees,Route,Maximize,LocateFixed,Move,MousePointer2,ChevronDown,Check};
+const icon=n=>`<i data-lucide="${n}"></i>`,$=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const mark=`<svg viewBox="0 0 40 40" fill="none"><path d="M6 30V15L15 10V30M24 30V6L33 12V30M3 34H37M9 19H12M9 24H12M27 15H30M27 20H30M27 25H30" stroke="currentColor" stroke-width="1.7"/><path d="M16 34L20 25L24 34" fill="currentColor"/></svg>`;
+$('#app').innerHTML=`
+ <main id="scene" aria-label="苏州三维城市地图，拖动旋转，滚轮缩放，右键平移" tabindex="0"></main>
+ <header class="topbar"><button class="brand" title="返回主城全景">${mark}<span class="brand-title">苏州<span class="brand-divider"></span><span class="brand-sub">城市图谱</span></span><span class="version">2.0</span></button>
+  <div class="search-wrap">${icon('search')}<input id="search" type="search" autocomplete="off" placeholder="搜索地标 / 城区" aria-label="搜索地标或城区" aria-controls="search-results" aria-expanded="false"><kbd>/</kbd><div id="search-results" class="search-results" hidden></div></div>
+  <div class="top-actions"><a class="version-link" href="/" aria-label="进入姑苏小境1.0">1.0 姑苏小境 ${icon('arrow-up-right')}</a><div class="day-switch" aria-label="昼夜模式"><button id="day" class="active" aria-pressed="true">${icon('sun')}白昼</button><button id="night" aria-pressed="false">${icon('moon')}入夜</button></div><button id="about" class="icon-button" aria-label="查看数据说明" title="数据说明">${icon('info')}</button></div>
+ </header>
+ <aside class="atlas-heading"><div class="eyebrow"><span></span>SUZHOU · CITY ATLAS</div><h1>一城万象<span>。</span></h1><p>循着真实水脉，展开苏州全城。</p><div class="atlas-stats"><div><strong id="building-count">—</strong><span>真实建筑轮廓</span></div><div><strong>1<span class="stat-colon">:</span>1</strong><span>地理尺度</span></div></div><div class="heading-foot"><span class="live-dot"></span><span id="dataset-status">正在读取城市数据</span></div></aside>
+ <aside id="place-card" class="place-card" hidden aria-label="地标介绍"></aside>
+ <div class="map-labels" aria-label="地图地标">${landmarks.map(l=>`<button class="poi" data-poi="${l.id}"><span class="poi-dot"></span><span>${l.short||l.name}</span>${icon('arrow-up-right')}</button>`).join('')}</div>
+ <div class="region-labels" aria-hidden="true"><span data-water="jinji">金 鸡 湖</span><span data-water="dushu">独 墅 湖</span><span data-water="taihu">太　湖</span><span data-water="yangcheng">阳 澄 湖</span></div>
+ <button class="compass" id="north" aria-label="朝向正北" title="朝向正北"><span>N</span><svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="22" fill="none" stroke="currentColor" opacity=".25"/><g id="compass-needle"><path d="M25 7L31 30L25 26L19 30Z" fill="currentColor"/><path d="M25 43L19 30L25 34L31 30Z" fill="currentColor" opacity=".28"/></g></svg></button>
+ <nav class="view-tools" aria-label="视角控制"><button data-action="home" aria-label="主城全景" title="主城全景 · H">${icon('scan')}</button><button data-action="top" aria-label="垂直俯瞰" title="垂直俯瞰 · T">${icon('locate-fixed')}</button><hr><button data-action="plus" aria-label="拉近" title="拉近">${icon('plus')}</button><button data-action="minus" aria-label="拉远" title="拉远">${icon('minus')}</button><hr><button data-action="rotate" aria-label="自动旋转" aria-pressed="false" title="自动旋转">${icon('rotate-3d')}</button><button data-action="labels" class="active" aria-label="显示地标" aria-pressed="true" title="地标标签">${icon('map-pin')}</button><button data-action="capture" aria-label="保存截图" title="保存截图">${icon('camera')}</button><button data-action="fullscreen" aria-label="全屏" title="全屏">${icon('maximize')}</button></nav>
+ <section class="layer-panel"><button id="layers-toggle" aria-expanded="false">${icon('layers')}<span>地图图层</span>${icon('chevron-down')}</button><div id="layers-content" hidden>${[['buildings','建筑','building-2'],['water','水系','waves'],['green','绿地','trees'],['roads','道路','route']].map(([id,name,i])=>`<label>${icon(i)}${name}<input type="checkbox" data-layer="${id}" checked><span class="switch"></span></label>`).join('')}<label class="quality-label">画质<select id="quality"><option value="standard">标准</option><option value="high">精细</option></select></label></div></section>
+ <div class="minimap"><div class="minimap-head"><span>苏州全域</span><button data-region="all" title="查看苏州全域" aria-label="查看苏州全域">${icon('arrow-up-right')}</button></div><canvas id="mini-canvas" width="384" height="256" aria-label="苏州全域导航图，点击定位"></canvas><div class="minimap-caption"><span class="map-position-dot"></span>当前视点 <span>WGS 84</span></div></div>
+ <div class="view-caption"><span id="region-en">CENTRAL SUZHOU</span><h2 id="region-name">主城全景</h2><p id="region-copy">古城的水脉，延伸为湖畔的天际线。</p></div>
+ <nav class="region-dock" aria-label="城区快速定位"><span class="dock-label">${icon('compass')}循地而行</span><div class="region-scroll">${regions.map(r=>`<button data-region="${r.id}" class="${r.id==='center'?'active':''}" aria-pressed="${r.id==='center'}">${r.name}</button>`).join('')}</div></nav>
+ <footer class="footer"><div class="source-credit"><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a><span>·</span><button id="source-info">轮廓数据 / 部分高度估算</button></div><div class="interaction-hint"><span>拖动旋转</span><span>滚轮缩放</span><span>右键平移</span></div><div class="scale-bar"><span id="scale-value">1 km</span><i id="scale-line"></i></div></footer>
+ <div class="coordinate-strip"><span id="coordinate">31.3060° N · 120.6470° E</span><span id="camera-height">视高 —</span></div>
+ <div class="toast" role="status" aria-live="polite"></div>
+ <dialog id="about-dialog" aria-labelledby="about-title"><button class="dialog-close icon-button" aria-label="关闭说明">${icon('x')}</button><div class="eyebrow">A CITY, AT ITS OWN SCALE</div><h2 id="about-title">从一座微缩城，<br>走向真实的城市尺度。</h2><p>2.0 以苏州市行政范围内的公开建筑轮廓、道路与水系构建城市图谱。位置与尺寸使用米制投影，水平与垂直均为 1:1。</p><div id="data-facts"></div><details class="coverage-details"><summary>查看各行政区建筑数量</summary><div id="coverage-list"></div></details><p class="data-note">建筑覆盖取决于公开地图的收录情况，未收录区域不作虚构填充。缺失高度按建筑用途估算，窗格为程序化立面；东方之门、国金中心和虎丘塔为特征简模。地形暂按平面处理，未包含实景贴图和室内。这是地理数据驱动的城市模型，尚不是测绘级数字孪生。</p><div class="dialog-links"><a href="/data/footprints.json.gz" download>下载建筑轮廓数据 ${icon('arrow-up-right')}</a><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">数据许可 · ODbL ${icon('arrow-up-right')}</a></div><div class="dialog-shortcuts"><span><kbd>N</kbd>昼夜</span><span><kbd>H</kbd>全景</span><span><kbd>T</kbd>俯瞰</span><span><kbd>/</kbd>搜索</span></div></dialog>
+ <div class="loading"><div class="loading-mark">${mark}</div><h2>正在展开苏州</h2><p id="load-message">读取城市轮廓、道路与水系</p><div class="loading-track"><i></i></div><span id="load-count">SUZHOU CITY ATLAS · 2.0</span><button id="retry" hidden>重新加载</button></div>
+`;
+createIcons({icons});
+const params=new URLSearchParams(location.search);
+const state={ready:false,night:params.has('night')?1:0,nightTarget:params.has('night')?1:0,region:'center',selected:null,labels:true,quality:'standard',debug:'final',time:0,paused:false,autoRotate:false};
+const errors=[];let renderer,scene,camera,controls,world,flight=null,toastTimer,lastNow=performance.now(),frames=0,frameAccum=0,rafMs=0,cpuMs=0,lastMetrics=performance.now(),gpuMs=null,miniBase=null;
+const dummy=new THREE.Vector3(),ray=new THREE.Raycaster(),ndc=new THREE.Vector2();
+function toast(s){$('.toast').textContent=s;$('.toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('.toast').classList.remove('show'),3000);}
+function safeRender(){renderer.render(scene,camera);}
+function fitCamera(target,distance,azimuth,polar,instant=false){
+ const t=new THREE.Vector3(target[0],target[1],target[2]),p=new THREE.Vector3().setFromSpherical(new THREE.Spherical(distance,polar,azimuth)).add(t);
+ controls.autoRotate=false;state.autoRotate=false;setAction('rotate',false);
+ if(instant){flight=null;camera.position.copy(p);controls.target.copy(t);controls.update();}
+ else flight={start:performance.now(),duration:1200,from:camera.position.clone(),to:p,fromTarget:controls.target.clone(),toTarget:t};
+}
+function setAction(action,on){const b=$(`[data-action="${action}"]`);b?.classList.toggle('active',on);b?.setAttribute('aria-pressed',String(on));}
+function goRegion(id,instant=false){
+ const r=regions.find(r=>r.id===id);if(!r)return;state.region=id;state.selected=null;world?.landmarks.select(null);$('#place-card').hidden=true;resize();$('.atlas-heading').classList.remove('hidden');
+ $('#region-en').textContent=r.en;$('#region-name').textContent=r.name;$('#region-copy').textContent=r.copy;
+ $$('[data-region]').forEach(b=>{b.classList.toggle('active',b.dataset.region===id);b.setAttribute('aria-pressed',String(b.dataset.region===id));});
+ fitCamera([r.pos[0],0,r.pos[1]],r.distance,r.azimuth,r.polar,instant);updateSelectedLabels();
+}
+function selectPlace(id,instant=false){
+ const l=landmarks.find(l=>l.id===id);if(!l)return;state.selected=id;state.region=l.region;world.landmarks.select(id);$('.atlas-heading').classList.add('hidden');
+ $('#place-card').innerHTML=`<div class="card-top"><span class="eyebrow">${l.category}</span><button id="close-place" class="icon-button" aria-label="关闭地标介绍">${icon('x')}</button></div><span class="place-english">${l.en}</span><h2>${l.name}</h2><div class="place-rule"></div><p>${l.description}</p><div class="place-fact"><strong>${l.fact}</strong><span>${l.factLabel}</span></div><div class="place-coordinates">${l.lat.toFixed(4)}° N &nbsp; ${l.lon.toFixed(4)}° E</div><a class="place-source" href="${l.source}" target="_blank" rel="noreferrer">${l.sourceLabel}${icon('arrow-up-right')}</a><span class="model-note">${l.model?'地标特征简模 · 真实地理位置':'真实地图轮廓 · 建筑高度含估算'}</span>`;
+ $('#place-card').hidden=false;resize();createIcons({icons});$('#close-place').onclick=closePlace;
+ $('#region-en').textContent=l.en;$('#region-name').textContent=l.name;$('#region-copy').textContent=l.category;
+ fitCamera([l.pos[0],l.height*.33,l.pos[1]],l.distance,l.azimuth,l.polar,instant);updateSelectedLabels();
+ $$('[data-region]').forEach(b=>{b.classList.toggle('active',b.dataset.region===l.region);b.setAttribute('aria-pressed',String(b.dataset.region===l.region));});
+}
+function closePlace(){state.selected=null;$('#place-card').hidden=true;resize();$('.atlas-heading').classList.remove('hidden');world.landmarks.select(null);updateSelectedLabels();}
+function updateSelectedLabels(){$$('[data-poi]').forEach(b=>b.classList.toggle('selected',b.dataset.poi===state.selected));}
+function setNight(on,instant=false){state.nightTarget=on?1:0;if(instant)state.night=state.nightTarget;document.body.classList.toggle('night',on);$('#day').classList.toggle('active',!on);$('#night').classList.toggle('active',on);$('#day').setAttribute('aria-pressed',String(!on));$('#night').setAttribute('aria-pressed',String(on));}
+function topView(){fitCamera(controls.target.toArray(),controls.getDistance(),0,.015);toast('已切换垂直俯瞰 · 拖动可继续旋转');}
+function zoom(factor){flight=null;const delta=camera.position.clone().sub(controls.target).multiplyScalar(factor);delta.setLength(THREE.MathUtils.clamp(delta.length(),controls.minDistance,controls.maxDistance));camera.position.copy(controls.target).add(delta);controls.update();}
+function resize(){if(!renderer)return;camera.aspect=innerWidth/innerHeight;if(innerWidth<=760&&state.selected)camera.setViewOffset(innerWidth,innerHeight,0,-115,innerWidth,innerHeight);else camera.clearViewOffset();camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);}
+function setQuality(q){state.quality=q;renderer.setPixelRatio(Math.min(devicePixelRatio,q==='high'?2:1.35));$('#quality').value=q;resize();}
+async function init(){
+ scene=new THREE.Scene();scene.background=new THREE.Color('#dfe5dc');scene.fog=new THREE.Fog('#dfe5dc',45000,145000);
+ renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.35));renderer.setSize(innerWidth,innerHeight);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.1;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.shadowMap.autoUpdate=false;$('#scene').append(renderer.domElement);
+ renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();$('.loading').classList.remove('done');$('#load-message').textContent='图形上下文中断，请重新加载场景';$('#retry').hidden=false;});
+ camera=new THREE.PerspectiveCamera(43,innerWidth/innerHeight,2,350000);controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.075;controls.minDistance=120;controls.maxDistance=230000;controls.minPolarAngle=.012;controls.maxPolarAngle=Math.PI*.477;controls.screenSpacePanning=false;controls.zoomSpeed=.8;controls.panSpeed=.85;controls.rotateSpeed=.5;controls.autoRotateSpeed=.28;
+ controls.addEventListener('start',()=>{flight=null;});goRegion(params.get('region')||'center',true);
+ const hemi=new THREE.HemisphereLight('#eff5e8','#697c68',2.6);scene.add(hemi);const sun=new THREE.DirectionalLight('#fff0d6',3.1);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.normalBias=1.1;sun.shadow.bias=-.00015;sun.shadow.camera.near=100;sun.shadow.camera.far=30000;scene.add(sun);scene.add(sun.target);const fill=new THREE.DirectionalLight('#bfdad2',.55);fill.position.set(10000,6000,8000);scene.add(fill);
+ const materials=createMaterials();const outside=new THREE.Mesh(new THREE.PlaneGeometry(1500000,1500000),new THREE.MeshStandardMaterial({color:'#d1d8ca',roughness:1}));outside.rotation.x=-Math.PI/2;outside.position.y=-6;scene.add(outside);
+ let shadowX=Infinity,shadowZ=Infinity,shadowSpan=0,shadowMode=-1;
+ const dayBG=new THREE.Color('#dfe5dc'),nightBG=new THREE.Color('#071c28'),dayFloor=new THREE.Color('#d1d8ca'),nightFloor=new THREE.Color('#13282b');
+ function animate(now){
+  requestAnimationFrame(animate);const start=performance.now(),dt=Math.min((now-lastNow)/1000,.06),raw=now-lastNow;lastNow=now;if(!state.paused)state.time+=dt;
+  state.night=THREE.MathUtils.lerp(state.night,state.nightTarget,1-Math.exp(-dt*3.5));if(Math.abs(state.night-state.nightTarget)<.001)state.night=state.nightTarget;
+  const n=state.night;scene.background.copy(dayBG).lerp(nightBG,n);scene.fog.color.copy(scene.background);outside.material.color.copy(dayFloor).lerp(nightFloor,n);hemi.intensity=THREE.MathUtils.lerp(1.7,1.15,n);sun.intensity=THREE.MathUtils.lerp(2.5,.72,n);sun.color.set(n>.5?'#b6d1ec':'#fff0d6');fill.intensity=THREE.MathUtils.lerp(.55,.45,n);renderer.toneMappingExposure=THREE.MathUtils.lerp(.92,1.0,n);
+  if(flight){const t=Math.min(1,(now-flight.start)/flight.duration),e=t*t*(3-2*t);camera.position.lerpVectors(flight.from,flight.to,e);controls.target.lerpVectors(flight.fromTarget,flight.toTarget,e);if(t===1)flight=null;}
+  controls.update();
+  // Keep exploration in the geographic data envelope without obstructing free rotation.
+  if(world){const b=world.manifest.bounds;const x=THREE.MathUtils.clamp(controls.target.x,b[0]-5000,b[2]+5000),z=THREE.MathUtils.clamp(controls.target.z,-b[3]-5000,-b[1]+5000);camera.position.x+=x-controls.target.x;camera.position.z+=z-controls.target.z;controls.target.x=x;controls.target.z=z;}
+  const distance=controls.getDistance();camera.near=Math.max(.5,distance/80);camera.updateProjectionMatrix();scene.fog.near=Math.max(45000,distance*1.4);scene.fog.far=Math.max(145000,distance*3);const span=THREE.MathUtils.clamp(distance*.55,500,11000),showShadow=distance<26000;
+  sun.castShadow=showShadow;
+  if(showShadow&&(Math.hypot(controls.target.x-shadowX,controls.target.z-shadowZ)>span*.08||Math.abs(span-shadowSpan)>span*.12||shadowMode!==Math.round(n))){
+   shadowX=controls.target.x;shadowZ=controls.target.z;shadowSpan=span;shadowMode=Math.round(n);sun.target.position.set(shadowX,0,shadowZ);sun.position.set(shadowX-6500,12000,shadowZ+5500);Object.assign(sun.shadow.camera,{left:-span,right:span,top:span,bottom:-span});sun.shadow.camera.updateProjectionMatrix();renderer.shadowMap.needsUpdate=true;
+  }
+  world?.update(n,state.time,distance,state.quality);renderer.render(scene,camera);updateLabels();
+  frameAccum+=Math.min(raw,250);frames++;cpuMs=THREE.MathUtils.lerp(cpuMs,performance.now()-start,.05);
+  if(now-lastMetrics>650){rafMs=frameAccum/frames;frameAccum=0;frames=0;lastMetrics=now;updateReadouts();drawMinimap();}
+ }
+ requestAnimationFrame(animate);
+ world=await buildWorld(scene,materials,(count,total,message)=>{$('#load-message').textContent=message;$('#load-count').textContent=`${count.toLocaleString()} / ${total.toLocaleString()} 栋建筑`;$('.loading-track i').style.width=`${Math.max(3,count/total*100)}%`;});
+ $('#building-count').textContent=world.manifest.buildingCount.toLocaleString();$('#dataset-status').textContent='苏州全域 · 本地数据已就绪';
+ const m=world.manifest;$('#data-facts').innerHTML=`<div><b>${m.buildingCount.toLocaleString()}</b><span>唯一建筑轮廓</span></div><div><b>${m.roadSegments.toLocaleString()}</b><span>道路及铁路分段</span></div><div><b>${m.heightSources.height.toLocaleString()}</b><span>有高度记录</span></div><div><b>${m.heightSources.levels.toLocaleString()}</b><span>按楼层换算高度</span></div><div><b>${m.heightSources.estimated.toLocaleString()}</b><span>按建筑用途估算</span></div><div><b>${m.snapshot.slice(0,10)}</b><span>地图数据日期</span></div>`;
+ const coverage=await getJSON('/data/coverage.json');$('#coverage-list').innerHTML=coverage.districts.map(d=>`<div><span>${d.name}</span><b>${d.buildingCount.toLocaleString()}</b></div>`).join('');
+ buildMinimap();setNight(!!state.nightTarget,true);state.ready=true;$('.loading').classList.add('done');renderer.shadowMap.needsUpdate=true;
+ if(params.get('place'))selectPlace(params.get('place'),true);if(params.has('debug'))mountDebug();
+}
+const waterLabels=[['jinji',120.696,31.309],['dushu',120.706,31.271],['taihu',120.3,31.17],['yangcheng',120.77,31.416]];
+const labelVector=new THREE.Vector3();
+function updateLabels(){if(!camera)return;const occupied=[];const order=[...landmarks].sort((a,b)=>(b.id===state.selected?1:0)-(a.id===state.selected?1:0));const d=controls.getDistance();
+ for(const l of order){const el=$(`[data-poi="${l.id}"]`);labelVector.set(l.pos[0],l.height+24,l.pos[1]).project(camera);const x=(labelVector.x*.5+.5)*innerWidth,y=(-labelVector.y*.5+.5)*innerHeight;
+  const width=l.name.length*12+50;const box=[x-width/2,y-24,x+width/2,y+8];let show=state.labels&&d<70000&&labelVector.z>0&&labelVector.z<1&&x>25&&x<innerWidth-70&&y>95&&y<innerHeight-155;
+  if(innerWidth>760&&x<340&&y<(state.selected?640:360))show=false;
+  if(innerWidth<=760&&y<(state.selected?385:225))show=false;
+  if(show&&occupied.some(b=>box[0]<b[2]&&box[2]>b[0]&&box[1]<b[3]&&box[3]>b[1]))show=false;
+  if(show)occupied.push(box);el.style.transform=`translate(${x}px,${y}px) translate(-50%,-100%)`;el.hidden=!show;
+ }
+ for(const [id,lon,lat] of waterLabels){const p=project(lon,lat);labelVector.set(p[0],3,p[1]).project(camera);const el=$(`[data-water="${id}"]`);const x=(labelVector.x*.5+.5)*innerWidth,y=(-labelVector.y*.5+.5)*innerHeight;el.style.transform=`translate(${x}px,${y}px) translate(-50%,-50%)`;el.hidden=!(state.labels&&labelVector.z>0&&labelVector.z<1&&x>350&&x<innerWidth-100&&y>100&&y<innerHeight-160&&d>3500);}
+ $('#compass-needle').style.transform=`rotate(${-controls.getAzimuthalAngle()*180/Math.PI}deg)`;
+}
+function updateReadouts(){if(!controls)return;const [lon,lat]=unproject(controls.target.x,controls.target.z);$('#coordinate').textContent=`${lat.toFixed(4)}° N · ${lon.toFixed(4)}° E`;$('#camera-height').textContent=`视高 ${(camera.position.y/1000).toFixed(2)} km`;
+ const metresPerPixel=2*controls.getDistance()*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))/innerHeight;const desired=metresPerPixel*82;const base=10**Math.floor(Math.log10(desired));const amount=[1,2,5,10].map(n=>n*base).find(n=>n>=desired)||base*10;$('#scale-value').textContent=amount>=1000?`${amount/1000} km`:`${amount} m`;$('#scale-line').style.width=`${amount/metresPerPixel}px`;
+ const debug=$('#debug-metrics');if(debug)debug.textContent=JSON.stringify(metrics(),null,2);
+}
+let miniExtent;
+function buildMinimap(){const m=world.manifest,b=m.bounds,pad=9,w=192,h=128;const scale=Math.min((w-pad*2)/(b[2]-b[0]),(h-pad*2)/(b[3]-b[1]));miniExtent={scale,x:(w-(b[2]-b[0])*scale)/2-b[0]*scale,z:(h-(b[3]-b[1])*scale)/2+b[3]*scale};
+ const c=document.createElement('canvas');c.width=384;c.height=256;const ctx=c.getContext('2d');ctx.scale(2,2);ctx.fillStyle='#e1e6da';ctx.fillRect(0,0,w,h);
+ function poly(rings,color){ctx.fillStyle=color;ctx.beginPath();for(const ring of rings){ring.forEach(([x,z],i)=>{const a=x*scale+miniExtent.x,b=z*scale+miniExtent.z;i?ctx.lineTo(a,b):ctx.moveTo(a,b);});ctx.closePath();}ctx.fill('evenodd');}
+ for(const p of world.landscape.boundary)poly(p,'#bbcbb4');for(const p of world.landscape.water)if(p.area>1e6)poly(p.p,'#91b6aa');
+ ctx.fillStyle='#5d806a';for(const r of regions.filter(r=>!['all','center','sip','wuzhong','hitech'].includes(r.id))){ctx.beginPath();ctx.arc(r.pos[0]*scale+miniExtent.x,r.pos[1]*scale+miniExtent.z,1.6,0,Math.PI*2);ctx.fill();}miniBase=c;drawMinimap();
+}
+function drawMinimap(){if(!miniBase)return;const c=$('#mini-canvas'),ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);ctx.drawImage(miniBase,0,0);const m=miniExtent,x=(controls.target.x*m.scale+m.x)*2,y=(controls.target.z*m.scale+m.z)*2;ctx.save();ctx.translate(x,y);ctx.rotate(-controls.getAzimuthalAngle());ctx.fillStyle='#b77b39';ctx.beginPath();ctx.moveTo(0,-8);ctx.lineTo(-6,6);ctx.lineTo(0,3);ctx.lineTo(6,6);ctx.closePath();ctx.fill();ctx.strokeStyle='#fff7e6';ctx.lineWidth=2;ctx.stroke();ctx.restore();}
+function metrics(){return{ready:state.ready,version:'2.0.0',three:THREE.REVISION,sourceBuildings:world?.manifest.buildingCount,loadedBuildings:world?.loaded,tiles:world?.tiles.length,heightSources:world?.manifest.heightSources,drawCalls:renderer?.info.render.calls,triangles:renderer?.info.render.triangles,geometries:renderer?.info.memory.geometries,textures:renderer?.info.memory.textures,camera:camera?.position.toArray(),target:controls?.target.toArray(),cameraDistance:controls?.getDistance(),night:state.night,region:state.region,selected:state.selected,quality:state.quality,dpr:renderer?.getPixelRatio(),viewport:[innerWidth,innerHeight],rafMs:+rafMs.toFixed(2),cpuSubmitMs:+cpuMs.toFixed(2),gpuMs,postprocessing:'none',renderTargets:['directional shadow 2048×2048'],errors};}
+function openAbout(){$('#about-dialog').showModal();}$('#about').onclick=openAbout;$('#source-info').onclick=openAbout;$('.dialog-close').onclick=()=>$('#about-dialog').close();$('#about-dialog').onclick=e=>{if(e.target===$('#about-dialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}};
+$('.brand').onclick=()=>goRegion('center');$('#day').onclick=()=>setNight(false);$('#night').onclick=()=>setNight(true);$('#north').onclick=()=>fitCamera(controls.target.toArray(),controls.getDistance(),0,controls.getPolarAngle());
+$$('[data-poi]').forEach(b=>b.onclick=()=>selectPlace(b.dataset.poi));$$('[data-region]').forEach(b=>b.onclick=()=>goRegion(b.dataset.region));
+$('#layers-toggle').onclick=()=>{const open=$('#layers-content').hidden;$('#layers-content').hidden=!open;$('#layers-toggle').setAttribute('aria-expanded',String(open));};
+$$('[data-layer]').forEach(i=>i.onchange=()=>world?.setLayer(i.dataset.layer,i.checked));$('#quality').onchange=e=>setQuality(e.target.value);
+$$('[data-action]').forEach(b=>b.onclick=async()=>{const a=b.dataset.action;if(a==='home')goRegion('center');else if(a==='top')topView();else if(a==='plus')zoom(.72);else if(a==='minus')zoom(1/.72);else if(a==='rotate'){flight=null;controls.autoRotate=!controls.autoRotate;state.autoRotate=controls.autoRotate;setAction(a,state.autoRotate);}else if(a==='labels'){state.labels=!state.labels;setAction(a,state.labels);}else if(a==='capture'){safeRender();const link=document.createElement('a');link.download=`苏州城市图谱-${state.nightTarget?'夜景':'白昼'}.png`;link.href=renderer.domElement.toDataURL('image/png');link.click();toast('已保存城市截图');}else if(a==='fullscreen'){try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{toast('当前窗口不支持全屏');}}});
+let pointerStart=null;$('#scene').addEventListener('pointerdown',e=>{pointerStart=[e.clientX,e.clientY];});$('#scene').addEventListener('pointerup',e=>{if(!world||!pointerStart||Math.hypot(e.clientX-pointerStart[0],e.clientY-pointerStart[1])>5||e.button!==0)return;ndc.set(e.clientX/innerWidth*2-1,-e.clientY/innerHeight*2+1);ray.setFromCamera(ndc,camera);const hit=ray.intersectObjects(world.landmarks.pickables,false)[0];if(hit&&world.layers.buildings.visible)selectPlace(hit.object.userData.landmark);});
+$('#mini-canvas').onclick=e=>{if(!miniExtent)return;const r=e.target.getBoundingClientRect(),x=(e.clientX-r.left)/r.width*192,z=(e.clientY-r.top)/r.height*128;closePlace();fitCamera([(x-miniExtent.x)/miniExtent.scale,0,(z-miniExtent.z)/miniExtent.scale],18000,controls.getAzimuthalAngle(),.7);};
+function search(){const q=$('#search').value.trim().toLowerCase();const items=[...landmarks.map(l=>({id:l.id,name:l.name,en:l.en,kind:'地标',type:'poi'})),...regions.map(r=>({id:r.id,name:r.name,en:r.en,kind:'城区',type:'region'}))].filter(x=>!q||x.name.includes(q)||x.en.toLowerCase().includes(q)).slice(0,12);const box=$('#search-results');box.hidden=false;$('#search').setAttribute('aria-expanded','true');box.innerHTML=items.length?items.map(x=>`<button data-search-id="${x.id}" data-type="${x.type}">${icon(x.type==='poi'?'map-pin':'compass')}<span>${x.name}</span><small>${x.kind}</small>${icon('arrow-up-right')}</button>`).join(''):'<p>没有找到地标或城区，试试「金鸡湖」「昆山」。</p>';createIcons({icons});box.querySelectorAll('button').forEach(b=>b.onclick=()=>{b.dataset.type==='poi'?selectPlace(b.dataset.searchId):goRegion(b.dataset.searchId);closeSearch();$('#search').value='';$('#search').blur();});}
+function closeSearch(){$('#search-results').hidden=true;$('#search').setAttribute('aria-expanded','false');}
+$('#search').addEventListener('input',search);$('#search').addEventListener('focus',search);$('#search').addEventListener('keydown',e=>{if(e.key==='Enter')$('#search-results button')?.click();if(e.key==='Escape'){closeSearch();$('#search').blur();}if(e.key==='ArrowDown'){e.preventDefault();$('#search-results button')?.focus();}});document.addEventListener('pointerdown',e=>{if(!e.target.closest('.search-wrap'))closeSearch();});
+addEventListener('resize',resize);addEventListener('keydown',e=>{if($('#about-dialog').open)return;if(e.key==='Escape'){closeSearch();if(state.selected)closePlace();return;}if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName))return;if(e.key==='/'){e.preventDefault();$('#search').focus();}if(!state.ready||e.repeat)return;if(e.code==='KeyN')setNight(!state.nightTarget);if(e.code==='KeyH')goRegion('center');if(e.code==='KeyT')topView();});
+$('#retry').onclick=()=>location.reload();addEventListener('error',e=>errors.push(e.message));addEventListener('unhandledrejection',e=>errors.push(String(e.reason)));
+function mountDebug(){const el=document.createElement('section');el.className='debug-panel';el.innerHTML=`<strong>SCENE INSPECTION</strong><select id="debug-mode"><option value="final">Final / no post</option><option value="height">Height sources</option><option value="emission">Window emission</option><option value="wireframe">Wireframe</option></select><button id="debug-pause">Pause / resume</button><pre id="debug-metrics"></pre>`;document.body.append(el);$('#debug-mode').onchange=e=>{state.debug=e.target.value;world.setDebug(state.debug);};$('#debug-pause').onclick=()=>state.paused=!state.paused;}
+window.__CITY__={get ready(){return state.ready;},getState:()=>({...state}),metrics,goRegion:(id,instant=true)=>goRegion(id,instant),selectPlace:(id,instant=true)=>selectPlace(id,instant),setNight:(n,instant=true)=>setNight(n,instant),setQuality,setDebug:m=>{state.debug=m;world.setDebug(m);},setTime:t=>{state.time=t;state.paused=true;},resume:()=>state.paused=false,setCamera:(p,t)=>{flight=null;camera.position.fromArray(p);controls.target.fromArray(t);controls.update();},topView,landmarks:()=>landmarks,manifest:()=>world.manifest,setLayer:(id,show)=>{world.setLayer(id,show);$(`[data-layer="${id}"]`).checked=show;},reset:()=>{setNight(false,true);world.setDebug('final');state.time=0;state.paused=true;goRegion('center',true);}};
+init().catch(e=>{console.error(e);errors.push(e.message);$('#load-message').textContent=e.message;$('#load-count').textContent='请检查本地数据文件后重试';$('#retry').hidden=false;});

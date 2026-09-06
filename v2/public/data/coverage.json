@@ -1,0 +1,66 @@
+{
+  "method": "建筑轮廓中心点与 OpenStreetMap 行政区多边形相交检查",
+  "buildings": 23898,
+  "districts": [
+    {
+      "name": "太仓市",
+      "relation": 4591593,
+      "buildingCount": 655,
+      "areaKm2": 808.8
+    },
+    {
+      "name": "张家港市",
+      "relation": 4591596,
+      "buildingCount": 900,
+      "areaKm2": 972.6
+    },
+    {
+      "name": "常熟市",
+      "relation": 4591597,
+      "buildingCount": 253,
+      "areaKm2": 1274.3
+    },
+    {
+      "name": "姑苏区",
+      "relation": 4591876,
+      "buildingCount": 7127,
+      "areaKm2": 82.0
+    },
+    {
+      "name": "昆山市",
+      "relation": 4591878,
+      "buildingCount": 5044,
+      "areaKm2": 931.8
+    },
+    {
+      "name": "吴江区",
+      "relation": 4591879,
+      "buildingCount": 201,
+      "areaKm2": 1226.9
+    },
+    {
+      "name": "吴中区",
+      "relation": 4591880,
+      "buildingCount": 4493,
+      "areaKm2": 2209.2
+    },
+    {
+      "name": "相城区",
+      "relation": 4591881,
+      "buildingCount": 68,
+      "areaKm2": 492.5
+    },
+    {
+      "name": "苏州工业园区",
+      "relation": 7363894,
+      "buildingCount": 4968,
+      "areaKm2": 281.5
+    },
+    {
+      "name": "虎丘区",
+      "relation": 7598901,
+      "buildingCount": 188,
+      "areaKm2": 332.9
+    }
+  ]
+}

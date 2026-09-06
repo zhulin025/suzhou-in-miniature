@@ -1,0 +1,2178 @@
+{
+  "selection": {
+    "buildingCount": 23898,
+    "idSetSHA256": "e79b482f122319ae6e4e896416eb6b433a5acd48f6e985658f45c20465d36235",
+    "availableOSMRecords": 56580,
+    "selection": "用户确认冻结本次 23898 栋建筑；不继续纳入全部源记录。",
+    "coverage": "5 个市辖区、4 个县级市，另列苏州工业园区"
+  },
+  "version": "2.0.0",
+  "source": "OpenStreetMap contributors",
+  "sourceURL": "https://www.openstreetmap.org/copyright",
+  "license": "ODbL-1.0",
+  "snapshot": "2026-09-06T15:21:21Z",
+  "boundaryOSM": 4430941,
+  "buildingCount": 23898,
+  "sourceElementCount": 23898,
+  "coverageSelection": "用户确认的 23898 栋建筑子集；各行政区均有覆盖，非完整建筑普查。",
+  "landscapeSelection": "已获取的水系、绿地及主干道和局部街道，含主要湖泊完整轮廓；不是完整道路数据库。",
+  "uniqueBuildingIDs": 23898,
+  "heightSources": {
+    "height": 81,
+    "levels": 967,
+    "estimated": 22850
+  },
+  "excluded": {},
+  "waterPolygons": 3837,
+  "greenPolygons": 3540,
+  "waterways": 5037,
+  "roadSegments": 10327,
+  "bounds": [
+    -69953.7,
+    -59823.1,
+    69597.8,
+    82707.8
+  ],
+  "geographicBounds": [
+    119.9162087,
+    30.7603342,
+    121.3829396,
+    32.0457785
+  ],
+  "projection": "+proj=tmerc +lat_0=31.3 +lon_0=120.65 +k=1 +x_0=0 +y_0=0 +ellps=WGS84 +units=m +no_defs",
+  "origin": [
+    120.65,
+    31.3
+  ],
+  "metersPerUnit": 1,
+  "coverageAreaKm2": 8612.4,
+  "notes": [
+    "建筑覆盖以公开地图收录情况为限，未收录区域没有虚构填充。",
+    "轮廓为真实地图数据；缺失高度按用途估算，立面窗格为程序化表达。",
+    "地标特征模型为简化重建，不是测绘级实景模型。"
+  ],
+  "sourceHashes": {
+    "boundary": "5be9e82b61046e8a3d1d7c59025e4d4dbda6ca5bdf6a9df9a0b17bf4038b6c37",
+    "buildings": "93298b1204e4638ee9d46239024858e408cf09ebd4c2d52f3f5e392b930d9207",
+    "landscape": "5d359b5c63d104ba71b8f92057eab33f22789f71dd2497aa62a423648bd34365",
+    "roads": "0e6eb8c70a69d082c616628389f6111d2d2a9bc028d98b523dbd69ab8c114ace"
+  },
+  "tiles": [
+    {
+      "id": "-1_-6",
+      "origin": [
+        -4000,
+        -24000
+      ],
+      "count": 4,
+      "vertices": 190,
+      "triangles": 106,
+      "bytes": 2068,
+      "maxHeight": 16
+    },
+    {
+      "id": "-1_-7",
+      "origin": [
+        -4000,
+        -28000
+      ],
+      "count": 9,
+      "vertices": 180,
+      "triangles": 90,
+      "bytes": 1979,
+      "maxHeight": 16
+    },
+    {
+      "id": "5_-7",
+      "origin": [
+        20000,
+        -28000
+      ],
+      "count": 3,
+      "vertices": 60,
+      "triangles": 30,
+      "bytes": 834,
+      "maxHeight": 16
+    },
+    {
+      "id": "0_-14",
+      "origin": [
+        0,
+        -56000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 442,
+      "maxHeight": 16
+    },
+    {
+      "id": "1_-19",
+      "origin": [
+        4000,
+        -76000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 439,
+      "maxHeight": 16
+    },
+    {
+      "id": "6_-9",
+      "origin": [
+        24000,
+        -36000
+      ],
+      "count": 7,
+      "vertices": 140,
+      "triangles": 70,
+      "bytes": 1627,
+      "maxHeight": 16
+    },
+    {
+      "id": "2_-12",
+      "origin": [
+        8000,
+        -48000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 442,
+      "maxHeight": 16
+    },
+    {
+      "id": "4_-12",
+      "origin": [
+        16000,
+        -48000
+      ],
+      "count": 11,
+      "vertices": 240,
+      "triangles": 122,
+      "bytes": 2607,
+      "maxHeight": 16
+    },
+    {
+      "id": "14_-6",
+      "origin": [
+        56000,
+        -24000
+      ],
+      "count": 97,
+      "vertices": 2010,
+      "triangles": 1012,
+      "bytes": 19028,
+      "maxHeight": 16
+    },
+    {
+      "id": "9_-6",
+      "origin": [
+        36000,
+        -24000
+      ],
+      "count": 14,
+      "vertices": 280,
+      "triangles": 140,
+      "bytes": 2894,
+      "maxHeight": 16
+    },
+    {
+      "id": "11_-7",
+      "origin": [
+        44000,
+        -28000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 435,
+      "maxHeight": 16
+    },
+    {
+      "id": "11_0",
+      "origin": [
+        44000,
+        0
+      ],
+      "count": 223,
+      "vertices": 8225,
+      "triangles": 4489,
+      "bytes": 69908,
+      "maxHeight": 96
+    },
+    {
+      "id": "11_-6",
+      "origin": [
+        44000,
+        -24000
+      ],
+      "count": 66,
+      "vertices": 1345,
+      "triangles": 675,
+      "bytes": 12557,
+      "maxHeight": 16
+    },
+    {
+      "id": "-1_0",
+      "origin": [
+        -4000,
+        0
+      ],
+      "count": 4656,
+      "vertices": 116715,
+      "triangles": 60717,
+      "bytes": 943220,
+      "maxHeight": 151
+    },
+    {
+      "id": "10_-11",
+      "origin": [
+        40000,
+        -44000
+      ],
+      "count": 3,
+      "vertices": 80,
+      "triangles": 42,
+      "bytes": 1035,
+      "maxHeight": 16
+    },
+    {
+      "id": "11_-11",
+      "origin": [
+        44000,
+        -44000
+      ],
+      "count": 3,
+      "vertices": 60,
+      "triangles": 30,
+      "bytes": 823,
+      "maxHeight": 16
+    },
+    {
+      "id": "9_-8",
+      "origin": [
+        36000,
+        -32000
+      ],
+      "count": 4,
+      "vertices": 90,
+      "triangles": 46,
+      "bytes": 1122,
+      "maxHeight": 16
+    },
+    {
+      "id": "-4_2",
+      "origin": [
+        -16000,
+        8000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 438,
+      "maxHeight": 16
+    },
+    {
+      "id": "-4_1",
+      "origin": [
+        -16000,
+        4000
+      ],
+      "count": 17,
+      "vertices": 405,
+      "triangles": 209,
+      "bytes": 3972,
+      "maxHeight": 32
+    },
+    {
+      "id": "-5_2",
+      "origin": [
+        -20000,
+        8000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 436,
+      "maxHeight": 16
+    },
+    {
+      "id": "-6_1",
+      "origin": [
+        -24000,
+        4000
+      ],
+      "count": 5,
+      "vertices": 120,
+      "triangles": 62,
+      "bytes": 1372,
+      "maxHeight": 16
+    },
+    {
+      "id": "-2_-1",
+      "origin": [
+        -8000,
+        -4000
+      ],
+      "count": 648,
+      "vertices": 14230,
+      "triangles": 7242,
+      "bytes": 118211,
+      "maxHeight": 19.2
+    },
+    {
+      "id": "-2_0",
+      "origin": [
+        -8000,
+        0
+      ],
+      "count": 834,
+      "vertices": 19900,
+      "triangles": 10272,
+      "bytes": 164212,
+      "maxHeight": 32
+    },
+    {
+      "id": "0_1",
+      "origin": [
+        0,
+        4000
+      ],
+      "count": 666,
+      "vertices": 13680,
+      "triangles": 6876,
+      "bytes": 109107,
+      "maxHeight": 19.2
+    },
+    {
+      "id": "0_2",
+      "origin": [
+        0,
+        8000
+      ],
+      "count": 12,
+      "vertices": 250,
+      "triangles": 126,
+      "bytes": 2587,
+      "maxHeight": 16
+    },
+    {
+      "id": "0_0",
+      "origin": [
+        0,
+        0
+      ],
+      "count": 417,
+      "vertices": 17145,
+      "triangles": 9453,
+      "bytes": 142877,
+      "maxHeight": 99
+    },
+    {
+      "id": "2_2",
+      "origin": [
+        8000,
+        8000
+      ],
+      "count": 1,
+      "vertices": 40,
+      "triangles": 22,
+      "bytes": 634,
+      "maxHeight": 16
+    },
+    {
+      "id": "2_0",
+      "origin": [
+        8000,
+        0
+      ],
+      "count": 279,
+      "vertices": 6290,
+      "triangles": 3216,
+      "bytes": 53340,
+      "maxHeight": 19.2
+    },
+    {
+      "id": "1_0",
+      "origin": [
+        4000,
+        0
+      ],
+      "count": 485,
+      "vertices": 10275,
+      "triangles": 5195,
+      "bytes": 81177,
+      "maxHeight": 48
+    },
+    {
+      "id": "3_-2",
+      "origin": [
+        12000,
+        -8000
+      ],
+      "count": 43,
+      "vertices": 1100,
+      "triangles": 574,
+      "bytes": 10516,
+      "maxHeight": 16
+    },
+    {
+      "id": "2_-2",
+      "origin": [
+        8000,
+        -8000
+      ],
+      "count": 13,
+      "vertices": 535,
+      "triangles": 295,
+      "bytes": 5350,
+      "maxHeight": 16
+    },
+    {
+      "id": "1_-2",
+      "origin": [
+        4000,
+        -8000
+      ],
+      "count": 119,
+      "vertices": 3030,
+      "triangles": 1580,
+      "bytes": 27033,
+      "maxHeight": 16
+    },
+    {
+      "id": "4_-2",
+      "origin": [
+        16000,
+        -8000
+      ],
+      "count": 14,
+      "vertices": 430,
+      "triangles": 230,
+      "bytes": 4343,
+      "maxHeight": 16
+    },
+    {
+      "id": "-4_-1",
+      "origin": [
+        -16000,
+        -4000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 436,
+      "maxHeight": 16
+    },
+    {
+      "id": "13_-10",
+      "origin": [
+        52000,
+        -40000
+      ],
+      "count": 4,
+      "vertices": 100,
+      "triangles": 52,
+      "bytes": 1211,
+      "maxHeight": 16
+    },
+    {
+      "id": "10_-5",
+      "origin": [
+        40000,
+        -20000
+      ],
+      "count": 2,
+      "vertices": 45,
+      "triangles": 23,
+      "bytes": 703,
+      "maxHeight": 16
+    },
+    {
+      "id": "0_5",
+      "origin": [
+        0,
+        20000
+      ],
+      "count": 1,
+      "vertices": 40,
+      "triangles": 22,
+      "bytes": 621,
+      "maxHeight": 10
+    },
+    {
+      "id": "-3_-1",
+      "origin": [
+        -12000,
+        -4000
+      ],
+      "count": 40,
+      "vertices": 1600,
+      "triangles": 880,
+      "bytes": 15018,
+      "maxHeight": 16
+    },
+    {
+      "id": "13_-8",
+      "origin": [
+        52000,
+        -32000
+      ],
+      "count": 2,
+      "vertices": 40,
+      "triangles": 20,
+      "bytes": 639,
+      "maxHeight": 9.6
+    },
+    {
+      "id": "-5_-3",
+      "origin": [
+        -20000,
+        -12000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 436,
+      "maxHeight": 16
+    },
+    {
+      "id": "-6_-4",
+      "origin": [
+        -24000,
+        -16000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 432,
+      "maxHeight": 3.2
+    },
+    {
+      "id": "-6_-5",
+      "origin": [
+        -24000,
+        -20000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 435,
+      "maxHeight": 16
+    },
+    {
+      "id": "-6_11",
+      "origin": [
+        -24000,
+        44000
+      ],
+      "count": 6,
+      "vertices": 120,
+      "triangles": 60,
+      "bytes": 1392,
+      "maxHeight": 16
+    },
+    {
+      "id": "-5_11",
+      "origin": [
+        -20000,
+        44000
+      ],
+      "count": 6,
+      "vertices": 120,
+      "triangles": 60,
+      "bytes": 1350,
+      "maxHeight": 16
+    },
+    {
+      "id": "-5_-2",
+      "origin": [
+        -20000,
+        -8000
+      ],
+      "count": 1,
+      "vertices": 70,
+      "triangles": 40,
+      "bytes": 938,
+      "maxHeight": 16
+    },
+    {
+      "id": "14_-8",
+      "origin": [
+        56000,
+        -32000
+      ],
+      "count": 375,
+      "vertices": 26925,
+      "triangles": 15405,
+      "bytes": 213880,
+      "maxHeight": 16
+    },
+    {
+      "id": "-2_-2",
+      "origin": [
+        -8000,
+        -8000
+      ],
+      "count": 194,
+      "vertices": 4415,
+      "triangles": 2263,
+      "bytes": 38683,
+      "maxHeight": 48
+    },
+    {
+      "id": "-1_-1",
+      "origin": [
+        -4000,
+        -4000
+      ],
+      "count": 3841,
+      "vertices": 92345,
+      "triangles": 47725,
+      "bytes": 745182,
+      "maxHeight": 76
+    },
+    {
+      "id": "3_-1",
+      "origin": [
+        12000,
+        -4000
+      ],
+      "count": 101,
+      "vertices": 3565,
+      "triangles": 1937,
+      "bytes": 31342,
+      "maxHeight": 19.2
+    },
+    {
+      "id": "1_-1",
+      "origin": [
+        4000,
+        -4000
+      ],
+      "count": 519,
+      "vertices": 22345,
+      "triangles": 12371,
+      "bytes": 189524,
+      "maxHeight": 450
+    },
+    {
+      "id": "0_-1",
+      "origin": [
+        0,
+        -4000
+      ],
+      "count": 1723,
+      "vertices": 64365,
+      "triangles": 35173,
+      "bytes": 535683,
+      "maxHeight": 282
+    },
+    {
+      "id": "8_1",
+      "origin": [
+        32000,
+        4000
+      ],
+      "count": 6,
+      "vertices": 130,
+      "triangles": 66,
+      "bytes": 1430,
+      "maxHeight": 16
+    },
+    {
+      "id": "-3_-17",
+      "origin": [
+        -12000,
+        -68000
+      ],
+      "count": 13,
+      "vertices": 640,
+      "triangles": 358,
+      "bytes": 6256,
+      "maxHeight": 50
+    },
+    {
+      "id": "-2_-17",
+      "origin": [
+        -8000,
+        -68000
+      ],
+      "count": 18,
+      "vertices": 765,
+      "triangles": 423,
+      "bytes": 7569,
+      "maxHeight": 25
+    },
+    {
+      "id": "-3_-16",
+      "origin": [
+        -12000,
+        -64000
+      ],
+      "count": 87,
+      "vertices": 2545,
+      "triangles": 1353,
+      "bytes": 23581,
+      "maxHeight": 19.2
+    },
+    {
+      "id": "-2_-3",
+      "origin": [
+        -8000,
+        -12000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 432,
+      "maxHeight": 16
+    },
+    {
+      "id": "3_-19",
+      "origin": [
+        12000,
+        -76000
+      ],
+      "count": 3,
+      "vertices": 60,
+      "triangles": 30,
+      "bytes": 832,
+      "maxHeight": 9.6
+    },
+    {
+      "id": "-3_0",
+      "origin": [
+        -12000,
+        0
+      ],
+      "count": 46,
+      "vertices": 3155,
+      "triangles": 1801,
+      "bytes": 28288,
+      "maxHeight": 38.7
+    },
+    {
+      "id": "2_-1",
+      "origin": [
+        8000,
+        -4000
+      ],
+      "count": 75,
+      "vertices": 2760,
+      "triangles": 1506,
+      "bytes": 25255,
+      "maxHeight": 96
+    },
+    {
+      "id": "8_-4",
+      "origin": [
+        32000,
+        -16000
+      ],
+      "count": 1,
+      "vertices": 25,
+      "triangles": 13,
+      "bytes": 499,
+      "maxHeight": 16
+    },
+    {
+      "id": "10_-4",
+      "origin": [
+        40000,
+        -16000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 443,
+      "maxHeight": 16
+    },
+    {
+      "id": "11_-1",
+      "origin": [
+        44000,
+        -4000
+      ],
+      "count": 28,
+      "vertices": 660,
+      "triangles": 340,
+      "bytes": 6354,
+      "maxHeight": 16
+    },
+    {
+      "id": "10_-6",
+      "origin": [
+        40000,
+        -24000
+      ],
+      "count": 19,
+      "vertices": 410,
+      "triangles": 208,
+      "bytes": 4128,
+      "maxHeight": 16
+    },
+    {
+      "id": "9_3",
+      "origin": [
+        36000,
+        12000
+      ],
+      "count": 40,
+      "vertices": 800,
+      "triangles": 400,
+      "bytes": 7507,
+      "maxHeight": 16
+    },
+    {
+      "id": "4_6",
+      "origin": [
+        16000,
+        24000
+      ],
+      "count": 4,
+      "vertices": 80,
+      "triangles": 40,
+      "bytes": 1012,
+      "maxHeight": 16
+    },
+    {
+      "id": "1_2",
+      "origin": [
+        4000,
+        8000
+      ],
+      "count": 6,
+      "vertices": 130,
+      "triangles": 66,
+      "bytes": 1378,
+      "maxHeight": 16
+    },
+    {
+      "id": "-6_5",
+      "origin": [
+        -24000,
+        20000
+      ],
+      "count": 1,
+      "vertices": 40,
+      "triangles": 22,
+      "bytes": 634,
+      "maxHeight": 16
+    },
+    {
+      "id": "10_-1",
+      "origin": [
+        40000,
+        -4000
+      ],
+      "count": 20,
+      "vertices": 410,
+      "triangles": 206,
+      "bytes": 4015,
+      "maxHeight": 16
+    },
+    {
+      "id": "10_0",
+      "origin": [
+        40000,
+        0
+      ],
+      "count": 5,
+      "vertices": 180,
+      "triangles": 98,
+      "bytes": 1970,
+      "maxHeight": 16
+    },
+    {
+      "id": "-9_7",
+      "origin": [
+        -36000,
+        28000
+      ],
+      "count": 6,
+      "vertices": 185,
+      "triangles": 99,
+      "bytes": 2061,
+      "maxHeight": 16
+    },
+    {
+      "id": "-1_11",
+      "origin": [
+        -4000,
+        44000
+      ],
+      "count": 19,
+      "vertices": 380,
+      "triangles": 190,
+      "bytes": 3577,
+      "maxHeight": 16
+    },
+    {
+      "id": "-3_11",
+      "origin": [
+        -12000,
+        44000
+      ],
+      "count": 33,
+      "vertices": 660,
+      "triangles": 330,
+      "bytes": 6131,
+      "maxHeight": 16
+    },
+    {
+      "id": "1_1",
+      "origin": [
+        4000,
+        4000
+      ],
+      "count": 580,
+      "vertices": 15215,
+      "triangles": 7969,
+      "bytes": 125685,
+      "maxHeight": 76.8
+    },
+    {
+      "id": "0_4",
+      "origin": [
+        0,
+        16000
+      ],
+      "count": 1,
+      "vertices": 30,
+      "triangles": 16,
+      "bytes": 518,
+      "maxHeight": 16
+    },
+    {
+      "id": "-3_1",
+      "origin": [
+        -12000,
+        4000
+      ],
+      "count": 14,
+      "vertices": 395,
+      "triangles": 209,
+      "bytes": 4029,
+      "maxHeight": 16
+    },
+    {
+      "id": "-2_1",
+      "origin": [
+        -8000,
+        4000
+      ],
+      "count": 91,
+      "vertices": 3020,
+      "triangles": 1630,
+      "bytes": 26613,
+      "maxHeight": 19.2
+    },
+    {
+      "id": "6_-7",
+      "origin": [
+        24000,
+        -28000
+      ],
+      "count": 11,
+      "vertices": 220,
+      "triangles": 110,
+      "bytes": 2369,
+      "maxHeight": 16
+    },
+    {
+      "id": "7_-6",
+      "origin": [
+        28000,
+        -24000
+      ],
+      "count": 6,
+      "vertices": 120,
+      "triangles": 60,
+      "bytes": 1379,
+      "maxHeight": 16
+    },
+    {
+      "id": "7_-7",
+      "origin": [
+        28000,
+        -28000
+      ],
+      "count": 12,
+      "vertices": 250,
+      "triangles": 126,
+      "bytes": 2630,
+      "maxHeight": 16
+    },
+    {
+      "id": "8_-6",
+      "origin": [
+        32000,
+        -24000
+      ],
+      "count": 6,
+      "vertices": 120,
+      "triangles": 60,
+      "bytes": 1397,
+      "maxHeight": 16
+    },
+    {
+      "id": "9_-7",
+      "origin": [
+        36000,
+        -28000
+      ],
+      "count": 2,
+      "vertices": 40,
+      "triangles": 20,
+      "bytes": 629,
+      "maxHeight": 16
+    },
+    {
+      "id": "7_-8",
+      "origin": [
+        28000,
+        -32000
+      ],
+      "count": 5,
+      "vertices": 100,
+      "triangles": 50,
+      "bytes": 1178,
+      "maxHeight": 9.6
+    },
+    {
+      "id": "5_-6",
+      "origin": [
+        20000,
+        -24000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 432,
+      "maxHeight": 16
+    },
+    {
+      "id": "5_-8",
+      "origin": [
+        20000,
+        -32000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 433,
+      "maxHeight": 9.6
+    },
+    {
+      "id": "8_-3",
+      "origin": [
+        32000,
+        -12000
+      ],
+      "count": 8,
+      "vertices": 190,
+      "triangles": 98,
+      "bytes": 2079,
+      "maxHeight": 86.4
+    },
+    {
+      "id": "7_-3",
+      "origin": [
+        28000,
+        -12000
+      ],
+      "count": 2547,
+      "vertices": 65065,
+      "triangles": 33945,
+      "bytes": 532426,
+      "maxHeight": 160
+    },
+    {
+      "id": "8_-1",
+      "origin": [
+        32000,
+        -4000
+      ],
+      "count": 9,
+      "vertices": 180,
+      "triangles": 90,
+      "bytes": 1879,
+      "maxHeight": 16
+    },
+    {
+      "id": "7_0",
+      "origin": [
+        28000,
+        0
+      ],
+      "count": 2,
+      "vertices": 40,
+      "triangles": 20,
+      "bytes": 618,
+      "maxHeight": 10
+    },
+    {
+      "id": "7_-1",
+      "origin": [
+        28000,
+        -4000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 440,
+      "maxHeight": 10
+    },
+    {
+      "id": "8_-2",
+      "origin": [
+        32000,
+        -8000
+      ],
+      "count": 6,
+      "vertices": 120,
+      "triangles": 60,
+      "bytes": 1323,
+      "maxHeight": 10
+    },
+    {
+      "id": "12_-6",
+      "origin": [
+        48000,
+        -24000
+      ],
+      "count": 10,
+      "vertices": 200,
+      "triangles": 100,
+      "bytes": 2138,
+      "maxHeight": 16
+    },
+    {
+      "id": "12_-8",
+      "origin": [
+        48000,
+        -32000
+      ],
+      "count": 4,
+      "vertices": 80,
+      "triangles": 40,
+      "bytes": 1006,
+      "maxHeight": 16
+    },
+    {
+      "id": "11_-5",
+      "origin": [
+        44000,
+        -20000
+      ],
+      "count": 22,
+      "vertices": 440,
+      "triangles": 220,
+      "bytes": 4379,
+      "maxHeight": 16
+    },
+    {
+      "id": "13_-7",
+      "origin": [
+        52000,
+        -28000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 449,
+      "maxHeight": 16
+    },
+    {
+      "id": "7_-2",
+      "origin": [
+        28000,
+        -8000
+      ],
+      "count": 816,
+      "vertices": 23410,
+      "triangles": 12414,
+      "bytes": 197315,
+      "maxHeight": 92.8
+    },
+    {
+      "id": "-2_11",
+      "origin": [
+        -8000,
+        44000
+      ],
+      "count": 124,
+      "vertices": 4195,
+      "triangles": 2269,
+      "bytes": 36344,
+      "maxHeight": 16
+    },
+    {
+      "id": "-3_12",
+      "origin": [
+        -12000,
+        48000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 436,
+      "maxHeight": 16
+    },
+    {
+      "id": "-4_12",
+      "origin": [
+        -16000,
+        48000
+      ],
+      "count": 2,
+      "vertices": 40,
+      "triangles": 20,
+      "bytes": 604,
+      "maxHeight": 16
+    },
+    {
+      "id": "-5_12",
+      "origin": [
+        -20000,
+        48000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 448,
+      "maxHeight": 16
+    },
+    {
+      "id": "0_11",
+      "origin": [
+        0,
+        44000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 438,
+      "maxHeight": 16
+    },
+    {
+      "id": "6_-3",
+      "origin": [
+        24000,
+        -12000
+      ],
+      "count": 1182,
+      "vertices": 25600,
+      "triangles": 12996,
+      "bytes": 208314,
+      "maxHeight": 76.8
+    },
+    {
+      "id": "-1_-2",
+      "origin": [
+        -4000,
+        -8000
+      ],
+      "count": 15,
+      "vertices": 475,
+      "triangles": 255,
+      "bytes": 4799,
+      "maxHeight": 16
+    },
+    {
+      "id": "9_-1",
+      "origin": [
+        36000,
+        -4000
+      ],
+      "count": 21,
+      "vertices": 450,
+      "triangles": 228,
+      "bytes": 4347,
+      "maxHeight": 16
+    },
+    {
+      "id": "6_-10",
+      "origin": [
+        24000,
+        -40000
+      ],
+      "count": 41,
+      "vertices": 860,
+      "triangles": 434,
+      "bytes": 8462,
+      "maxHeight": 16
+    },
+    {
+      "id": "8_-10",
+      "origin": [
+        32000,
+        -40000
+      ],
+      "count": 28,
+      "vertices": 630,
+      "triangles": 322,
+      "bytes": 6310,
+      "maxHeight": 16
+    },
+    {
+      "id": "7_-9",
+      "origin": [
+        28000,
+        -36000
+      ],
+      "count": 35,
+      "vertices": 730,
+      "triangles": 368,
+      "bytes": 7282,
+      "maxHeight": 16
+    },
+    {
+      "id": "10_-9",
+      "origin": [
+        40000,
+        -36000
+      ],
+      "count": 13,
+      "vertices": 260,
+      "triangles": 130,
+      "bytes": 2731,
+      "maxHeight": 16
+    },
+    {
+      "id": "9_-10",
+      "origin": [
+        36000,
+        -40000
+      ],
+      "count": 1,
+      "vertices": 50,
+      "triangles": 28,
+      "bytes": 734,
+      "maxHeight": 16
+    },
+    {
+      "id": "4_-10",
+      "origin": [
+        16000,
+        -40000
+      ],
+      "count": 6,
+      "vertices": 120,
+      "triangles": 60,
+      "bytes": 1400,
+      "maxHeight": 16
+    },
+    {
+      "id": "5_-12",
+      "origin": [
+        20000,
+        -48000
+      ],
+      "count": 4,
+      "vertices": 80,
+      "triangles": 40,
+      "bytes": 1007,
+      "maxHeight": 16
+    },
+    {
+      "id": "4_-11",
+      "origin": [
+        16000,
+        -44000
+      ],
+      "count": 3,
+      "vertices": 60,
+      "triangles": 30,
+      "bytes": 820,
+      "maxHeight": 16
+    },
+    {
+      "id": "5_-11",
+      "origin": [
+        20000,
+        -44000
+      ],
+      "count": 4,
+      "vertices": 80,
+      "triangles": 40,
+      "bytes": 1013,
+      "maxHeight": 16
+    },
+    {
+      "id": "9_2",
+      "origin": [
+        36000,
+        8000
+      ],
+      "count": 17,
+      "vertices": 355,
+      "triangles": 179,
+      "bytes": 3601,
+      "maxHeight": 16
+    },
+    {
+      "id": "9_1",
+      "origin": [
+        36000,
+        4000
+      ],
+      "count": 6,
+      "vertices": 120,
+      "triangles": 60,
+      "bytes": 1355,
+      "maxHeight": 16
+    },
+    {
+      "id": "5_-4",
+      "origin": [
+        20000,
+        -16000
+      ],
+      "count": 7,
+      "vertices": 180,
+      "triangles": 94,
+      "bytes": 1981,
+      "maxHeight": 16
+    },
+    {
+      "id": "9_-2",
+      "origin": [
+        36000,
+        -8000
+      ],
+      "count": 6,
+      "vertices": 120,
+      "triangles": 60,
+      "bytes": 1354,
+      "maxHeight": 16
+    },
+    {
+      "id": "6_-13",
+      "origin": [
+        24000,
+        -52000
+      ],
+      "count": 1,
+      "vertices": 25,
+      "triangles": 13,
+      "bytes": 497,
+      "maxHeight": 16
+    },
+    {
+      "id": "6_-6",
+      "origin": [
+        24000,
+        -24000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 439,
+      "maxHeight": 16
+    },
+    {
+      "id": "10_-3",
+      "origin": [
+        40000,
+        -12000
+      ],
+      "count": 3,
+      "vertices": 60,
+      "triangles": 30,
+      "bytes": 794,
+      "maxHeight": 16
+    },
+    {
+      "id": "0_-7",
+      "origin": [
+        0,
+        -28000
+      ],
+      "count": 4,
+      "vertices": 110,
+      "triangles": 58,
+      "bytes": 1311,
+      "maxHeight": 16
+    },
+    {
+      "id": "1_-8",
+      "origin": [
+        4000,
+        -32000
+      ],
+      "count": 8,
+      "vertices": 160,
+      "triangles": 80,
+      "bytes": 1733,
+      "maxHeight": 16
+    },
+    {
+      "id": "1_-9",
+      "origin": [
+        4000,
+        -36000
+      ],
+      "count": 12,
+      "vertices": 240,
+      "triangles": 120,
+      "bytes": 2541,
+      "maxHeight": 16
+    },
+    {
+      "id": "0_-9",
+      "origin": [
+        0,
+        -36000
+      ],
+      "count": 4,
+      "vertices": 80,
+      "triangles": 40,
+      "bytes": 1030,
+      "maxHeight": 16
+    },
+    {
+      "id": "0_-8",
+      "origin": [
+        0,
+        -32000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 440,
+      "maxHeight": 16
+    },
+    {
+      "id": "-2_-10",
+      "origin": [
+        -8000,
+        -40000
+      ],
+      "count": 5,
+      "vertices": 100,
+      "triangles": 50,
+      "bytes": 1174,
+      "maxHeight": 16
+    },
+    {
+      "id": "-1_-10",
+      "origin": [
+        -4000,
+        -40000
+      ],
+      "count": 3,
+      "vertices": 60,
+      "triangles": 30,
+      "bytes": 816,
+      "maxHeight": 16
+    },
+    {
+      "id": "8_0",
+      "origin": [
+        32000,
+        0
+      ],
+      "count": 2,
+      "vertices": 60,
+      "triangles": 32,
+      "bytes": 840,
+      "maxHeight": 10
+    },
+    {
+      "id": "-4_-20",
+      "origin": [
+        -16000,
+        -80000
+      ],
+      "count": 358,
+      "vertices": 7465,
+      "triangles": 3763,
+      "bytes": 61893,
+      "maxHeight": 16
+    },
+    {
+      "id": "-6_-19",
+      "origin": [
+        -24000,
+        -76000
+      ],
+      "count": 21,
+      "vertices": 460,
+      "triangles": 234,
+      "bytes": 4545,
+      "maxHeight": 16
+    },
+    {
+      "id": "-5_-19",
+      "origin": [
+        -20000,
+        -76000
+      ],
+      "count": 35,
+      "vertices": 1060,
+      "triangles": 566,
+      "bytes": 10178,
+      "maxHeight": 16
+    },
+    {
+      "id": "-6_-20",
+      "origin": [
+        -24000,
+        -80000
+      ],
+      "count": 7,
+      "vertices": 140,
+      "triangles": 70,
+      "bytes": 1579,
+      "maxHeight": 16
+    },
+    {
+      "id": "-7_-20",
+      "origin": [
+        -28000,
+        -80000
+      ],
+      "count": 7,
+      "vertices": 140,
+      "triangles": 70,
+      "bytes": 1574,
+      "maxHeight": 16
+    },
+    {
+      "id": "-7_-19",
+      "origin": [
+        -28000,
+        -76000
+      ],
+      "count": 9,
+      "vertices": 210,
+      "triangles": 108,
+      "bytes": 2301,
+      "maxHeight": 16
+    },
+    {
+      "id": "-7_-18",
+      "origin": [
+        -28000,
+        -72000
+      ],
+      "count": 4,
+      "vertices": 80,
+      "triangles": 40,
+      "bytes": 1029,
+      "maxHeight": 16
+    },
+    {
+      "id": "-5_-20",
+      "origin": [
+        -20000,
+        -80000
+      ],
+      "count": 30,
+      "vertices": 610,
+      "triangles": 306,
+      "bytes": 5885,
+      "maxHeight": 16
+    },
+    {
+      "id": "-5_-18",
+      "origin": [
+        -20000,
+        -72000
+      ],
+      "count": 16,
+      "vertices": 320,
+      "triangles": 160,
+      "bytes": 3219,
+      "maxHeight": 16
+    },
+    {
+      "id": "-4_-19",
+      "origin": [
+        -16000,
+        -76000
+      ],
+      "count": 6,
+      "vertices": 120,
+      "triangles": 60,
+      "bytes": 1386,
+      "maxHeight": 16
+    },
+    {
+      "id": "-4_-18",
+      "origin": [
+        -16000,
+        -72000
+      ],
+      "count": 47,
+      "vertices": 940,
+      "triangles": 470,
+      "bytes": 8962,
+      "maxHeight": 16
+    },
+    {
+      "id": "-6_-18",
+      "origin": [
+        -24000,
+        -72000
+      ],
+      "count": 225,
+      "vertices": 4635,
+      "triangles": 2331,
+      "bytes": 40677,
+      "maxHeight": 16
+    },
+    {
+      "id": "15_-7",
+      "origin": [
+        60000,
+        -28000
+      ],
+      "count": 5,
+      "vertices": 120,
+      "triangles": 62,
+      "bytes": 1395,
+      "maxHeight": 16
+    },
+    {
+      "id": "14_-7",
+      "origin": [
+        56000,
+        -28000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 433,
+      "maxHeight": 16
+    },
+    {
+      "id": "5_-9",
+      "origin": [
+        20000,
+        -36000
+      ],
+      "count": 27,
+      "vertices": 570,
+      "triangles": 288,
+      "bytes": 5609,
+      "maxHeight": 16
+    },
+    {
+      "id": "-2_-18",
+      "origin": [
+        -8000,
+        -72000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 429,
+      "maxHeight": 16
+    },
+    {
+      "id": "-3_-19",
+      "origin": [
+        -12000,
+        -76000
+      ],
+      "count": 9,
+      "vertices": 180,
+      "triangles": 90,
+      "bytes": 1961,
+      "maxHeight": 16
+    },
+    {
+      "id": "-3_-20",
+      "origin": [
+        -12000,
+        -80000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 433,
+      "maxHeight": 16
+    },
+    {
+      "id": "-2_-20",
+      "origin": [
+        -8000,
+        -80000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 440,
+      "maxHeight": 16
+    },
+    {
+      "id": "-1_1",
+      "origin": [
+        -4000,
+        4000
+      ],
+      "count": 885,
+      "vertices": 19275,
+      "triangles": 9795,
+      "bytes": 142197,
+      "maxHeight": 19.2
+    },
+    {
+      "id": "1_-11",
+      "origin": [
+        4000,
+        -44000
+      ],
+      "count": 4,
+      "vertices": 240,
+      "triangles": 136,
+      "bytes": 2564,
+      "maxHeight": 16
+    },
+    {
+      "id": "5_-3",
+      "origin": [
+        20000,
+        -12000
+      ],
+      "count": 21,
+      "vertices": 475,
+      "triangles": 243,
+      "bytes": 4686,
+      "maxHeight": 32
+    },
+    {
+      "id": "0_-2",
+      "origin": [
+        0,
+        -8000
+      ],
+      "count": 7,
+      "vertices": 220,
+      "triangles": 118,
+      "bytes": 2369,
+      "maxHeight": 16
+    },
+    {
+      "id": "-1_-4",
+      "origin": [
+        -4000,
+        -16000
+      ],
+      "count": 3,
+      "vertices": 205,
+      "triangles": 117,
+      "bytes": 2283,
+      "maxHeight": 16
+    },
+    {
+      "id": "-4_-3",
+      "origin": [
+        -16000,
+        -12000
+      ],
+      "count": 6,
+      "vertices": 130,
+      "triangles": 66,
+      "bytes": 1466,
+      "maxHeight": 16
+    },
+    {
+      "id": "4_-3",
+      "origin": [
+        16000,
+        -12000
+      ],
+      "count": 3,
+      "vertices": 65,
+      "triangles": 33,
+      "bytes": 861,
+      "maxHeight": 16
+    },
+    {
+      "id": "-1_-3",
+      "origin": [
+        -4000,
+        -12000
+      ],
+      "count": 23,
+      "vertices": 1095,
+      "triangles": 611,
+      "bytes": 10456,
+      "maxHeight": 16
+    },
+    {
+      "id": "-4_-2",
+      "origin": [
+        -16000,
+        -8000
+      ],
+      "count": 5,
+      "vertices": 120,
+      "triangles": 62,
+      "bytes": 1382,
+      "maxHeight": 32
+    },
+    {
+      "id": "-3_-2",
+      "origin": [
+        -12000,
+        -8000
+      ],
+      "count": 3,
+      "vertices": 260,
+      "triangles": 150,
+      "bytes": 2733,
+      "maxHeight": 16
+    },
+    {
+      "id": "6_-4",
+      "origin": [
+        24000,
+        -16000
+      ],
+      "count": 45,
+      "vertices": 1100,
+      "triangles": 570,
+      "bytes": 10605,
+      "maxHeight": 38.4
+    },
+    {
+      "id": "-7_6",
+      "origin": [
+        -28000,
+        24000
+      ],
+      "count": 15,
+      "vertices": 385,
+      "triangles": 201,
+      "bytes": 3870,
+      "maxHeight": 16
+    },
+    {
+      "id": "-6_-1",
+      "origin": [
+        -24000,
+        -4000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 437,
+      "maxHeight": 12.8
+    },
+    {
+      "id": "1_4",
+      "origin": [
+        4000,
+        16000
+      ],
+      "count": 2,
+      "vertices": 50,
+      "triangles": 26,
+      "bytes": 703,
+      "maxHeight": 16
+    },
+    {
+      "id": "6_-5",
+      "origin": [
+        24000,
+        -20000
+      ],
+      "count": 3,
+      "vertices": 60,
+      "triangles": 30,
+      "bytes": 800,
+      "maxHeight": 16
+    },
+    {
+      "id": "2_1",
+      "origin": [
+        8000,
+        4000
+      ],
+      "count": 369,
+      "vertices": 7870,
+      "triangles": 3984,
+      "bytes": 64005,
+      "maxHeight": 19.2
+    },
+    {
+      "id": "-8_-1",
+      "origin": [
+        -32000,
+        -4000
+      ],
+      "count": 18,
+      "vertices": 580,
+      "triangles": 312,
+      "bytes": 5710,
+      "maxHeight": 16
+    },
+    {
+      "id": "-3_3",
+      "origin": [
+        -12000,
+        12000
+      ],
+      "count": 2,
+      "vertices": 100,
+      "triangles": 56,
+      "bytes": 1222,
+      "maxHeight": 16
+    },
+    {
+      "id": "2_-3",
+      "origin": [
+        8000,
+        -12000
+      ],
+      "count": 1,
+      "vertices": 40,
+      "triangles": 22,
+      "bytes": 637,
+      "maxHeight": 19.2
+    },
+    {
+      "id": "-9_4",
+      "origin": [
+        -36000,
+        16000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 435,
+      "maxHeight": 16
+    },
+    {
+      "id": "-8_4",
+      "origin": [
+        -32000,
+        16000
+      ],
+      "count": 13,
+      "vertices": 470,
+      "triangles": 256,
+      "bytes": 4804,
+      "maxHeight": 16
+    },
+    {
+      "id": "-9_5",
+      "origin": [
+        -36000,
+        20000
+      ],
+      "count": 4,
+      "vertices": 155,
+      "triangles": 85,
+      "bytes": 1763,
+      "maxHeight": 16
+    },
+    {
+      "id": "-8_3",
+      "origin": [
+        -32000,
+        12000
+      ],
+      "count": 1,
+      "vertices": 75,
+      "triangles": 43,
+      "bytes": 978,
+      "maxHeight": 16
+    },
+    {
+      "id": "-9_6",
+      "origin": [
+        -36000,
+        24000
+      ],
+      "count": 7,
+      "vertices": 280,
+      "triangles": 154,
+      "bytes": 2987,
+      "maxHeight": 16
+    },
+    {
+      "id": "-5_1",
+      "origin": [
+        -20000,
+        4000
+      ],
+      "count": 1,
+      "vertices": 20,
+      "triangles": 10,
+      "bytes": 432,
+      "maxHeight": 9.6
+    },
+    {
+      "id": "-4_0",
+      "origin": [
+        -16000,
+        0
+      ],
+      "count": 3,
+      "vertices": 95,
+      "triangles": 51,
+      "bytes": 1168,
+      "maxHeight": 16
+    },
+    {
+      "id": "-5_-1",
+      "origin": [
+        -20000,
+        -4000
+      ],
+      "count": 3,
+      "vertices": 120,
+      "triangles": 66,
+      "bytes": 1356,
+      "maxHeight": 10
+    },
+    {
+      "id": "6_-2",
+      "origin": [
+        24000,
+        -8000
+      ],
+      "count": 1,
+      "vertices": 40,
+      "triangles": 22,
+      "bytes": 624,
+      "maxHeight": 9.6
+    },
+    {
+      "id": "4_5",
+      "origin": [
+        16000,
+        20000
+      ],
+      "count": 10,
+      "vertices": 390,
+      "triangles": 214,
+      "bytes": 3898,
+      "maxHeight": 16
+    }
+  ],
+  "tileSize": 4000,
+  "geometry": {
+    "vertices": 643195,
+    "triangles": 338125,
+    "compressedBytes": 5346420
+  },
+  "landmarkReplacements": [
+    {
+      "id": "w206069300",
+      "name": "虎丘塔（云岩寺塔）"
+    },
+    {
+      "id": "w477238586",
+      "name": "苏州国际金融中心"
+    }
+  ]
+}
