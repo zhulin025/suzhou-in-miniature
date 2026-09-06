@@ -4,3 +4,4 @@ dist/
 test-results/
 artifacts/*.png
 artifacts/visual-review.html
+.vercel

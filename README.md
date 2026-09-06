@@ -4,6 +4,13 @@
 
 这是艺术化缩景：地标采用可辨认的几何演绎，空间距离、建筑比例和地形经过重新编排，不是实测地图。
 
+## 在线访问与部署
+
+- 在线访问：[suzhou.liuwa.xyz](https://suzhou.liuwa.xyz/)
+- 公开仓库：[zhulin025/suzhou-in-miniature](https://github.com/zhulin025/suzhou-in-miniature)
+- Vercel 项目：`suzhou-in-miniature`，已连接上述 GitHub 仓库；推送到 `main` 分支会自动更新生产部署。
+- 构建使用 Vite，运行 `npm run build`，输出目录为 `dist`。
+
 ## 本地运行
 
 ```bash
@@ -11,7 +18,7 @@ npm install
 npm run dev -- --port 5173
 ```
 
-访问 <http://127.0.0.1:5173/>。`npm run build` 生成本地生产构建，`npm run preview` 预览构建。没有配置线上发布。
+访问 <http://127.0.0.1:5173/>。`npm run build` 生成本地生产构建，`npm run preview` 预览构建。
 
 ## 操作
 
