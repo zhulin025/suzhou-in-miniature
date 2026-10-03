@@ -1,0 +1,2605 @@
+{
+  "tool": "validate-city-geometry",
+  "generatedAt": "2026-10-03T03:17:13.117Z",
+  "purpose": "Static geometry, real collision-function placement checks, and 1-unit pedestrian connectivity for every new city",
+  "note": "Connectivity records physical walking only. Disconnected real islands may intentionally use landmark entry; such cases are reported explicitly, not silently counted as connected.",
+  "summary": {
+    "cities": 16,
+    "geometryAndPositionsPassed": 16,
+    "fullyWalkConnected": 15,
+    "connectivityWithExplicitIslandTransfersPassed": 16,
+    "expectedIslandTransferTargets": 3,
+    "unexpectedDisconnectedTargets": 0,
+    "blockedPathSamples": 0
+  },
+  "results": [
+    {
+      "city": "hangzhou",
+      "name": "杭州",
+      "group": "jiangnan",
+      "geometry": {
+        "triangles": 209742,
+        "meshCount": 43,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          16667,
+          120
+        ],
+        "spawn": {
+          "point": [
+            0,
+            2.95,
+            57
+          ],
+          "component": 0,
+          "snappedTo": [
+            0,
+            57
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "leifeng",
+            "name": "雷峰夕照",
+            "kind": "landmark",
+            "point": [
+              2,
+              2.95,
+              53
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              2,
+              53
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "three-pools",
+            "name": "三潭印月",
+            "kind": "landmark",
+            "point": [
+              -42,
+              2.95,
+              17
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -42,
+              17
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "broken-bridge",
+            "name": "断桥 · 白堤",
+            "kind": "landmark",
+            "point": [
+              29,
+              2.95,
+              -31
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              29,
+              -31
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "longjing",
+            "name": "湖畔龙井茶舍",
+            "kind": "landmark",
+            "point": [
+              53,
+              2.95,
+              36
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              53,
+              36
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "龙井茶舍",
+            "kind": "shop-door",
+            "point": [
+              53,
+              2.95,
+              32.7
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              53,
+              33
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "龙井茶舍",
+            "kind": "shop-inside",
+            "point": [
+              53.8,
+              2.95,
+              28.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              54,
+              29
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 562,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "shanghai",
+      "name": "上海",
+      "group": "metropolis",
+      "geometry": {
+        "triangles": 242288,
+        "meshCount": 46,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          19969
+        ],
+        "spawn": {
+          "point": [
+            -27,
+            2.95,
+            42
+          ],
+          "component": 0,
+          "snappedTo": [
+            -27,
+            42
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "shanghai-tower",
+            "name": "上海中心",
+            "kind": "landmark",
+            "point": [
+              31,
+              2.95,
+              -25
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              31,
+              -25
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "world-financial-center",
+            "name": "环球金融中心",
+            "kind": "landmark",
+            "point": [
+              69,
+              2.95,
+              -15
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              69,
+              -15
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "jin-mao",
+            "name": "金茂大厦",
+            "kind": "landmark",
+            "point": [
+              76,
+              2.95,
+              -46
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              76,
+              -46
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "oriental-pearl",
+            "name": "东方明珠",
+            "kind": "landmark",
+            "point": [
+              15,
+              2.95,
+              -18
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              15,
+              -18
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "the-bund",
+            "name": "外滩钟楼",
+            "kind": "landmark",
+            "point": [
+              -37,
+              2.95,
+              -19
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -37,
+              -19
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "弄堂生煎",
+            "kind": "shop-door",
+            "point": [
+              -58,
+              2.95,
+              21.7
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -58,
+              22
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "弄堂生煎",
+            "kind": "shop-inside",
+            "point": [
+              -57.2,
+              2.95,
+              17.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -57,
+              18
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 434,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "nantong",
+      "name": "南通",
+      "group": "jiangnan",
+      "geometry": {
+        "triangles": 223528,
+        "meshCount": 46,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          20054
+        ],
+        "spawn": {
+          "point": [
+            0,
+            2.95,
+            57
+          ],
+          "component": 0,
+          "snappedTo": [
+            0,
+            57
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "clock",
+            "name": "钟楼与谯楼",
+            "kind": "landmark",
+            "point": [
+              15,
+              2.95,
+              1
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              15,
+              1
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "haopavilions",
+            "name": "濠河五亭",
+            "kind": "landmark",
+            "point": [
+              0,
+              2.95,
+              -56
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              0,
+              -56
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "museum",
+            "name": "南通博物苑",
+            "kind": "landmark",
+            "point": [
+              -21,
+              2.95,
+              1
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -21,
+              1
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "wolfhill",
+            "name": "狼山塔影",
+            "kind": "landmark",
+            "point": [
+              -46,
+              2.95,
+              51
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -46,
+              51
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "蓝印布坊",
+            "kind": "shop-door",
+            "point": [
+              27,
+              2.95,
+              12.7
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              27,
+              13
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "蓝印布坊",
+            "kind": "shop-inside",
+            "point": [
+              27.8,
+              2.95,
+              8.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              28,
+              9
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 502,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "wuxi",
+      "name": "无锡",
+      "group": "jiangnan",
+      "geometry": {
+        "triangles": 239238,
+        "meshCount": 48,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          18084
+        ],
+        "spawn": {
+          "point": [
+            0,
+            2.95,
+            57
+          ],
+          "component": 0,
+          "snappedTo": [
+            0,
+            57
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "jichang",
+            "name": "寄畅园",
+            "kind": "landmark",
+            "point": [
+              -11,
+              2.95,
+              -11
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -11,
+              -11
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "qingming",
+            "name": "清名桥",
+            "kind": "landmark",
+            "point": [
+              8,
+              2.95,
+              20
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              8,
+              20
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "yuantouzhu",
+            "name": "鼋头渚",
+            "kind": "landmark",
+            "point": [
+              -30,
+              2.95,
+              27
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -30,
+              27
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "nanchan",
+            "name": "南禅寺 · 妙光塔",
+            "kind": "landmark",
+            "point": [
+              58,
+              2.95,
+              -12
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              58,
+              -12
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "惠山泥人铺",
+            "kind": "shop-door",
+            "point": [
+              -9,
+              2.95,
+              7.7
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -9,
+              8
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "惠山泥人铺",
+            "kind": "shop-inside",
+            "point": [
+              -8.2,
+              2.95,
+              3.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -8,
+              4
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 565,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "changzhou",
+      "name": "常州",
+      "group": "jiangnan",
+      "geometry": {
+        "triangles": 260584,
+        "meshCount": 45,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          21118
+        ],
+        "spawn": {
+          "point": [
+            0,
+            2.95,
+            57
+          ],
+          "component": 0,
+          "snappedTo": [
+            0,
+            57
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "tianning",
+            "name": "天宁宝塔",
+            "kind": "landmark",
+            "point": [
+              -25,
+              2.95,
+              20
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -25,
+              20
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "hongmei",
+            "name": "红梅阁",
+            "kind": "landmark",
+            "point": [
+              36,
+              2.95,
+              -30
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              36,
+              -30
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "wenbi",
+            "name": "文笔塔",
+            "kind": "landmark",
+            "point": [
+              43,
+              2.95,
+              -35
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              43,
+              -35
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "dongpo",
+            "name": "东坡园意",
+            "kind": "landmark",
+            "point": [
+              60,
+              2.95,
+              23
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              60,
+              23
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "龙城糕点",
+            "kind": "shop-door",
+            "point": [
+              -66,
+              2.95,
+              17.7
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -66,
+              18
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "龙城糕点",
+            "kind": "shop-inside",
+            "point": [
+              -65.2,
+              2.95,
+              13.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -65,
+              14
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 563,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "nanjing",
+      "name": "南京",
+      "group": "north",
+      "geometry": {
+        "triangles": 325500,
+        "meshCount": 42,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          19741,
+          1
+        ],
+        "spawn": {
+          "point": [
+            0,
+            2.95,
+            57
+          ],
+          "component": 0,
+          "snappedTo": [
+            0,
+            57
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "zhonghua",
+            "name": "中华门瓮城",
+            "kind": "landmark",
+            "point": [
+              -58,
+              2.95,
+              8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -58,
+              8
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "fuzimiao",
+            "name": "夫子庙 · 秦淮",
+            "kind": "landmark",
+            "point": [
+              -8,
+              2.95,
+              10
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -8,
+              10
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "zhongshan",
+            "name": "中山陵祭堂",
+            "kind": "landmark",
+            "point": [
+              53,
+              2.95,
+              -6
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              53,
+              -6
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "秦淮书舍",
+            "kind": "shop-door",
+            "point": [
+              24,
+              2.95,
+              4.7
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              24,
+              5
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "秦淮书舍",
+            "kind": "shop-inside",
+            "point": [
+              24.8,
+              2.95,
+              0.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              25,
+              1
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 567,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "wenzhou",
+      "name": "温州",
+      "group": "jiangnan",
+      "geometry": {
+        "triangles": 159392,
+        "meshCount": 45,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          12263,
+          3160
+        ],
+        "spawn": {
+          "point": [
+            0,
+            2.95,
+            57
+          ],
+          "component": 0,
+          "snappedTo": [
+            0,
+            57
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "easttower",
+            "name": "江心东塔",
+            "kind": "landmark",
+            "point": [
+              13,
+              2.95,
+              -29
+            ],
+            "walkable": true,
+            "component": 1,
+            "snappedTo": [
+              13,
+              -29
+            ],
+            "connectedFromSpawn": false,
+            "expectedIslandTransfer": {
+              "mode": "landmark-walk-spawn",
+              "reason": "江心屿为瓯江中真实岛屿，与大陆不设虚构步行桥。使用漫游起点/地标入口上岛；该目标独立通过 isWalkable 且岛内三个地标相互连通。"
+            }
+          },
+          {
+            "id": "westtower",
+            "name": "江心西塔",
+            "kind": "landmark",
+            "point": [
+              -33,
+              2.95,
+              -29
+            ],
+            "walkable": true,
+            "component": 1,
+            "snappedTo": [
+              -33,
+              -29
+            ],
+            "connectedFromSpawn": false,
+            "expectedIslandTransfer": {
+              "mode": "landmark-walk-spawn",
+              "reason": "江心屿为瓯江中真实岛屿，与大陆不设虚构步行桥。使用漫游起点/地标入口上岛；该目标独立通过 isWalkable 且岛内三个地标相互连通。"
+            }
+          },
+          {
+            "id": "jiangxin",
+            "name": "江心寺",
+            "kind": "landmark",
+            "point": [
+              -9,
+              2.95,
+              -24
+            ],
+            "walkable": true,
+            "component": 1,
+            "snappedTo": [
+              -9,
+              -24
+            ],
+            "connectedFromSpawn": false,
+            "expectedIslandTransfer": {
+              "mode": "landmark-walk-spawn",
+              "reason": "江心屿为瓯江中真实岛屿，与大陆不设虚构步行桥。使用漫游起点/地标入口上岛；该目标独立通过 isWalkable 且岛内三个地标相互连通。"
+            }
+          },
+          {
+            "id": "wuma",
+            "name": "五马街意象",
+            "kind": "landmark",
+            "point": [
+              -30,
+              2.95,
+              44
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -30,
+              44
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "瓯江鱼丸铺",
+            "kind": "shop-door",
+            "point": [
+              18,
+              2.95,
+              38.7
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              18,
+              39
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "瓯江鱼丸铺",
+            "kind": "shop-inside",
+            "point": [
+              18.8,
+              2.95,
+              34.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              19,
+              35
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 523,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [
+        {
+          "id": "easttower",
+          "name": "江心东塔",
+          "kind": "landmark",
+          "point": [
+            13,
+            2.95,
+            -29
+          ],
+          "walkable": true,
+          "component": 1,
+          "snappedTo": [
+            13,
+            -29
+          ],
+          "connectedFromSpawn": false,
+          "expectedIslandTransfer": {
+            "mode": "landmark-walk-spawn",
+            "reason": "江心屿为瓯江中真实岛屿，与大陆不设虚构步行桥。使用漫游起点/地标入口上岛；该目标独立通过 isWalkable 且岛内三个地标相互连通。"
+          }
+        },
+        {
+          "id": "westtower",
+          "name": "江心西塔",
+          "kind": "landmark",
+          "point": [
+            -33,
+            2.95,
+            -29
+          ],
+          "walkable": true,
+          "component": 1,
+          "snappedTo": [
+            -33,
+            -29
+          ],
+          "connectedFromSpawn": false,
+          "expectedIslandTransfer": {
+            "mode": "landmark-walk-spawn",
+            "reason": "江心屿为瓯江中真实岛屿，与大陆不设虚构步行桥。使用漫游起点/地标入口上岛；该目标独立通过 isWalkable 且岛内三个地标相互连通。"
+          }
+        },
+        {
+          "id": "jiangxin",
+          "name": "江心寺",
+          "kind": "landmark",
+          "point": [
+            -9,
+            2.95,
+            -24
+          ],
+          "walkable": true,
+          "component": 1,
+          "snappedTo": [
+            -9,
+            -24
+          ],
+          "connectedFromSpawn": false,
+          "expectedIslandTransfer": {
+            "mode": "landmark-walk-spawn",
+            "reason": "江心屿为瓯江中真实岛屿，与大陆不设虚构步行桥。使用漫游起点/地标入口上岛；该目标独立通过 isWalkable 且岛内三个地标相互连通。"
+          }
+        }
+      ],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": false,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "ningbo",
+      "name": "宁波",
+      "group": "jiangnan",
+      "geometry": {
+        "triangles": 185780,
+        "meshCount": 47,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          18532
+        ],
+        "spawn": {
+          "point": [
+            -7.727406610312546,
+            2.95,
+            59.070552360820166
+          ],
+          "component": 0,
+          "snappedTo": [
+            -8,
+            59
+          ],
+          "distance": 0.2815755524163901
+        },
+        "landmarks": [
+          {
+            "id": "tianyi",
+            "name": "天一阁",
+            "kind": "landmark",
+            "point": [
+              -55,
+              2.95,
+              46
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -55,
+              46
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "oldbund",
+            "name": "老外滩",
+            "kind": "landmark",
+            "point": [
+              -4,
+              2.95,
+              -29
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -4,
+              -29
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "tianfeng",
+            "name": "天封塔",
+            "kind": "landmark",
+            "point": [
+              48,
+              2.95,
+              39
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              48,
+              39
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "sanjiang",
+            "name": "三江口",
+            "kind": "landmark",
+            "point": [
+              23,
+              2.95,
+              17
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              23,
+              17
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "明州汤圆铺",
+            "kind": "shop-door",
+            "point": [
+              44,
+              2.95,
+              52.7
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              44,
+              53
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "明州汤圆铺",
+            "kind": "shop-inside",
+            "point": [
+              44.8,
+              2.95,
+              48.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              45,
+              49
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 500,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "guangzhou",
+      "name": "广州",
+      "group": "metropolis",
+      "geometry": {
+        "triangles": 416588,
+        "meshCount": 45,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          19887
+        ],
+        "spawn": {
+          "point": [
+            14,
+            2.95,
+            34
+          ],
+          "component": 0,
+          "snappedTo": [
+            14,
+            34
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "canton-tower",
+            "name": "广州塔",
+            "kind": "landmark",
+            "point": [
+              42,
+              2.95,
+              36
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              42,
+              36
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "opera-house",
+            "name": "广州大剧院",
+            "kind": "landmark",
+            "point": [
+              -38,
+              2.95,
+              0
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -38,
+              0
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "haixin-bridge",
+            "name": "海心桥",
+            "kind": "landmark",
+            "point": [
+              62,
+              3.4000000000000004,
+              37
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              62,
+              37
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "lingnan-arcade",
+            "name": "岭南骑楼街",
+            "kind": "landmark",
+            "point": [
+              -53,
+              2.95,
+              64
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -53,
+              64
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "榕荫茶楼",
+            "kind": "shop-door",
+            "point": [
+              2,
+              2.95,
+              49.2
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              2,
+              49
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "榕荫茶楼",
+            "kind": "shop-inside",
+            "point": [
+              2.8,
+              2.95,
+              44.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              3,
+              45
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 483,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "shenzhen",
+      "name": "深圳",
+      "group": "metropolis",
+      "geometry": {
+        "triangles": 392480,
+        "meshCount": 42,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          16891,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "spawn": {
+          "point": [
+            -4,
+            2.95,
+            13
+          ],
+          "component": 0,
+          "snappedTo": [
+            -4,
+            13
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "ping-an",
+            "name": "平安金融中心",
+            "kind": "landmark",
+            "point": [
+              -19,
+              2.95,
+              -29
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -19,
+              -29
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "china-resources",
+            "name": "春笋 · 华润大厦",
+            "kind": "landmark",
+            "point": [
+              43,
+              2.95,
+              -20
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              43,
+              -20
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "civic-center",
+            "name": "市民中心",
+            "kind": "landmark",
+            "point": [
+              -4,
+              2.95,
+              13
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -4,
+              13
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shenzhen-bay",
+            "name": "深圳湾滨海步道",
+            "kind": "landmark",
+            "point": [
+              25,
+              2.95,
+              21
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              25,
+              21
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "海风书房",
+            "kind": "shop-door",
+            "point": [
+              -61,
+              2.95,
+              25.7
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -61,
+              26
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "海风书房",
+            "kind": "shop-inside",
+            "point": [
+              -60.2,
+              2.95,
+              21.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -60,
+              22
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 424,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "beijing",
+      "name": "北京",
+      "group": "north",
+      "geometry": {
+        "triangles": 307856,
+        "meshCount": 34,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          21352
+        ],
+        "spawn": {
+          "point": [
+            0,
+            2.95,
+            57
+          ],
+          "component": 0,
+          "snappedTo": [
+            0,
+            57
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "beihai",
+            "name": "北海白塔",
+            "kind": "landmark",
+            "point": [
+              -62,
+              3.05,
+              -11
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -62,
+              -11
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "tiantan",
+            "name": "天坛 · 祈年殿",
+            "kind": "landmark",
+            "point": [
+              -50,
+              2.95,
+              43
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -50,
+              43
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "palace",
+            "name": "故宫 · 太和殿",
+            "kind": "landmark",
+            "point": [
+              8,
+              2.95,
+              -14
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              8,
+              -14
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "gulou",
+            "name": "鼓楼街景",
+            "kind": "landmark",
+            "point": [
+              12,
+              2.95,
+              37
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              12,
+              37
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "胡同小茶馆",
+            "kind": "shop-door",
+            "point": [
+              24,
+              2.95,
+              59.2
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              24,
+              59
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "胡同小茶馆",
+            "kind": "shop-inside",
+            "point": [
+              24.8,
+              2.95,
+              54.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              25,
+              55
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 549,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "datong",
+      "name": "大同",
+      "group": "north",
+      "geometry": {
+        "triangles": 280180,
+        "meshCount": 37,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          20453
+        ],
+        "spawn": {
+          "point": [
+            0,
+            2.95,
+            57
+          ],
+          "component": 0,
+          "snappedTo": [
+            0,
+            57
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "yungang",
+            "name": "云冈石窟意象",
+            "kind": "landmark",
+            "point": [
+              -46,
+              2.95,
+              -25
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -46,
+              -25
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "huayan",
+            "name": "华严寺大殿",
+            "kind": "landmark",
+            "point": [
+              45,
+              2.95,
+              -15
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              45,
+              -15
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "nine-dragons",
+            "name": "大同九龙壁",
+            "kind": "landmark",
+            "point": [
+              31,
+              2.95,
+              26
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              31,
+              26
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "datong-wall",
+            "name": "大同古城门",
+            "kind": "landmark",
+            "point": [
+              -56,
+              2.95,
+              45
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -56,
+              45
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "古城面香",
+            "kind": "shop-door",
+            "point": [
+              54,
+              2.95,
+              31.7
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              54,
+              32
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "古城面香",
+            "kind": "shop-inside",
+            "point": [
+              54.8,
+              2.95,
+              27.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              55,
+              28
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 528,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "changsha",
+      "name": "长沙",
+      "group": "metropolis",
+      "geometry": {
+        "triangles": 235968,
+        "meshCount": 47,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          19431
+        ],
+        "spawn": {
+          "point": [
+            30,
+            2.95,
+            35
+          ],
+          "component": 0,
+          "snappedTo": [
+            30,
+            35
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "orange-isle",
+            "name": "橘子洲",
+            "kind": "landmark",
+            "point": [
+              6,
+              2.95,
+              32
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              6,
+              32
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "aiwan-pavilion",
+            "name": "岳麓山 · 爱晚亭",
+            "kind": "landmark",
+            "point": [
+              -44,
+              2.95,
+              -22
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -44,
+              -22
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "dufu-pavilion",
+            "name": "杜甫江阁",
+            "kind": "landmark",
+            "point": [
+              31,
+              2.95,
+              26
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              31,
+              26
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "lucky-knot",
+            "name": "梅溪湖 · 中国结桥",
+            "kind": "landmark",
+            "point": [
+              -84,
+              3.4000000000000004,
+              28
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -84,
+              28
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "湘江米粉铺",
+            "kind": "shop-door",
+            "point": [
+              67,
+              2.95,
+              25.7
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              67,
+              26
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "湘江米粉铺",
+            "kind": "shop-inside",
+            "point": [
+              67.8,
+              2.95,
+              21.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              68,
+              22
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 501,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "wuhan",
+      "name": "武汉",
+      "group": "metropolis",
+      "geometry": {
+        "triangles": 243904,
+        "meshCount": 46,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          18198
+        ],
+        "spawn": {
+          "point": [
+            -22,
+            2.95,
+            23
+          ],
+          "component": 0,
+          "snappedTo": [
+            -22,
+            23
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "yellow-crane-tower",
+            "name": "黄鹤楼",
+            "kind": "landmark",
+            "point": [
+              36,
+              2.95,
+              -8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              36,
+              -8
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "yangtze-bridge",
+            "name": "武汉长江大桥",
+            "kind": "landmark",
+            "point": [
+              25,
+              2.95,
+              16
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              25,
+              16
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "qingchuan",
+            "name": "晴川阁",
+            "kind": "landmark",
+            "point": [
+              -44,
+              2.95,
+              6
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -44,
+              6
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "east-lake",
+            "name": "东湖樱径",
+            "kind": "landmark",
+            "point": [
+              32,
+              3.4000000000000004,
+              42
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              32,
+              42
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "汉口热干面",
+            "kind": "shop-door",
+            "point": [
+              -62,
+              2.95,
+              16.7
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -62,
+              17
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "汉口热干面",
+            "kind": "shop-inside",
+            "point": [
+              -61.2,
+              2.95,
+              12.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -61,
+              13
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 389,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "qingdao",
+      "name": "青岛",
+      "group": "north",
+      "geometry": {
+        "triangles": 124004,
+        "meshCount": 47,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          13709,
+          121
+        ],
+        "spawn": {
+          "point": [
+            -45,
+            2.95,
+            16
+          ],
+          "component": 0,
+          "snappedTo": [
+            -45,
+            16
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "zhanqiao",
+            "name": "栈桥 · 回澜阁",
+            "kind": "landmark",
+            "point": [
+              -45,
+              3.4000000000000004,
+              48
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -45,
+              48
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "may-wind",
+            "name": "五月的风",
+            "kind": "landmark",
+            "point": [
+              30,
+              2.95,
+              19
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              30,
+              19
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "cathedral",
+            "name": "圣弥厄尔教堂",
+            "kind": "landmark",
+            "point": [
+              -47,
+              2.95,
+              -18
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -47,
+              -18
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "little-qingdao",
+            "name": "小青岛灯塔",
+            "kind": "landmark",
+            "point": [
+              -6,
+              2.95,
+              20
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -6,
+              20
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "海风小书屋",
+            "kind": "shop-door",
+            "point": [
+              -18,
+              2.95,
+              2.7
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -18,
+              3
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "海风小书屋",
+            "kind": "shop-inside",
+            "point": [
+              -17.2,
+              2.95,
+              -1.2
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -17,
+              -1
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 406,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    },
+    {
+      "city": "dalian",
+      "name": "大连",
+      "group": "north",
+      "geometry": {
+        "triangles": 130440,
+        "meshCount": 55,
+        "nonFiniteCoordinates": 0,
+        "nonFiniteNormals": 0,
+        "finite": true
+      },
+      "pedestrian": {
+        "gridStep": 1,
+        "movement": "4-neighbor with collision-checked edge midpoints",
+        "bounds": [
+          -93,
+          -69,
+          93,
+          69
+        ],
+        "componentSizes": [
+          14650,
+          3
+        ],
+        "spawn": {
+          "point": [
+            -3,
+            2.95,
+            11
+          ],
+          "component": 0,
+          "snappedTo": [
+            -3,
+            11
+          ],
+          "distance": 0
+        },
+        "landmarks": [
+          {
+            "id": "xinghai-bridge",
+            "name": "星海湾跨海大桥",
+            "kind": "landmark",
+            "point": [
+              -1.7320508075688772,
+              2.95,
+              17
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -2,
+              17
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "xinghai-square",
+            "name": "星海广场",
+            "kind": "landmark",
+            "point": [
+              -3,
+              2.95,
+              11
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -3,
+              11
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "zhongshan-square",
+            "name": "中山广场建筑群",
+            "kind": "landmark",
+            "point": [
+              47,
+              2.95,
+              -22
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              47,
+              -22
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "russian-street",
+            "name": "俄罗斯风情街",
+            "kind": "landmark",
+            "point": [
+              -51,
+              2.95,
+              -17
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -51,
+              -17
+            ],
+            "connectedFromSpawn": true
+          }
+        ],
+        "shops": [
+          {
+            "id": "shop-0-door",
+            "name": "海港小咖啡",
+            "kind": "shop-door",
+            "point": [
+              -39,
+              2.95,
+              -10.8
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -39,
+              -11
+            ],
+            "connectedFromSpawn": true
+          },
+          {
+            "id": "shop-0-inside",
+            "name": "海港小咖啡",
+            "kind": "shop-inside",
+            "point": [
+              -38.2,
+              2.95,
+              -15.2
+            ],
+            "walkable": true,
+            "component": 0,
+            "snappedTo": [
+              -38,
+              -15
+            ],
+            "connectedFromSpawn": true
+          }
+        ]
+      },
+      "paths": {
+        "samples": 418,
+        "blockedSamples": 0,
+        "blockedSegments": []
+      },
+      "invalidTargets": [],
+      "disconnectedTargets": [],
+      "unexpectedDisconnectedTargets": [],
+      "geometryAndPositionsPassed": true,
+      "walkConnectivityPassed": true,
+      "connectivityPassed": true,
+      "pathsPassed": true
+    }
+  ]
+}

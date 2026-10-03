@@ -3,5 +3,6 @@ dist/
 .DS_Store
 test-results/
 artifacts/*.png
+artifacts/cities/*.png
 artifacts/visual-review.html
 .vercel

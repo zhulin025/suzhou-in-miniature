@@ -1,13 +1,23 @@
 import * as THREE from 'three';
-import { inject } from '@vercel/analytics';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { createIcons, ArrowUpRight, VolumeX, Volume2, Sun, Moon, Play, Pause, Scan, Plus, Minus, Rotate3d, MapPin, Camera, Expand, Compass, Globe, Waves, Flower2, Landmark, Building2, Mountain, Mouse, MoveVertical, Hand, Footprints, ArrowUp, ArrowLeft, ArrowDown, ArrowRight, X } from 'lucide';
-import { buildWorld, places } from './world.js';
+import {catalog,loaders} from './cities/catalog.js';
+import {buildCityWorld} from './cities/city-kit.js';
 import './style.css';
-import './cities/city-link.css';
+import './cities/city-page.css';
 
-inject();
+const params=new URLSearchParams(location.search),seed=Number(params.get('seed')||310528);
+const slug=location.pathname.split('/').filter(Boolean).at(-1) || params.get('city');
+const entry=catalog.find(c=>c.id===slug) || catalog.find(c=>c.id==='hangzhou');
+const module=await loaders[entry.group]();
+const city={...entry,...module.cities[entry.id]};
+const prepared=buildCityWorld(new THREE.Scene(),city,seed);
+const places=prepared.places;
+const buildWorld=scene=>{scene.add(prepared.root);return prepared;};
+document.title=city.name+'小境 · '+city.en+' IN MINIATURE';
+document.body.classList.add('city-page');
+
 
 const icons={ArrowUpRight,VolumeX,Volume2,Sun,Moon,Play,Pause,Scan,Plus,Minus,Rotate3d,MapPin,Camera,Expand,Compass,Globe,Waves,Flower2,Landmark,Building2,Mountain,Mouse,MoveVertical,Hand,Footprints,ArrowUp,ArrowLeft,ArrowDown,ArrowRight,X};
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)], icon=(name,cls='')=>`<i data-lucide="${name}" class="${cls}"></i>`;
@@ -17,7 +27,7 @@ $('#app').innerHTML=`
  <header class="topbar">
   <button class="brand" aria-label="回到姑苏全景"> <span class="brandmark">${pavilionIcon}</span><span><span class="brandname">姑苏小境</span><span class="brand-en">SUZHOU IN MINIATURE</span></span></button>
   <nav class="topnav" aria-label="主导航"><button class="nav-button active" data-nav="explore">探索苏州</button><button class="nav-button" data-nav="walk">城市漫游</button><button class="nav-button" data-nav="about">关于此境 ${icon('arrow-up-right')}</button></nav>
-  <div class="top-actions"><a class="version-link" href="/v2/" aria-label="进入苏州城市图谱2.0">2.0 城市图谱 ${icon('arrow-up-right')}</a><button class="audio-btn" title="开启水乡环境音" aria-label="开启环境音" aria-pressed="false">${icon('volume-x')}</button><div class="day-toggle" aria-label="昼夜切换"><button id="day" class="active" aria-pressed="true">${icon('sun')}白昼</button><button id="night" aria-pressed="false">${icon('moon')}入夜</button></div></div>
+  <div class="top-actions"><a class="version-link" href="/cities.html" aria-label="切换城市">切换城市 ${icon('arrow-up-right')}</a><button class="audio-btn" title="开启水乡环境音" aria-label="开启环境音" aria-pressed="false">${icon('volume-x')}</button><div class="day-toggle" aria-label="昼夜切换"><button id="day" class="active" aria-pressed="true">${icon('sun')}白昼</button><button id="night" aria-pressed="false">${icon('moon')}入夜</button></div></div>
  </header>
  <aside class="intro"><div class="eyebrow">A LITTLE WORLD, A SLOWER LIFE</div><h1>把江南，<br><em>放在掌心。</em><span class="small-stamp">苏</span></h1><p class="intro-copy">漫游苏州的水巷、园林与湖光。<br>在方寸之间，遇见千年姑苏。</p><div class="mode-label"><span class="pulse-dot"></span><span id="mode-label">自由探索</span><span style="opacity:.4;margin:0 3px">/</span><span id="time-label">日光和煦</span></div><div class="intro-line"></div><div class="place-detail"><span class="detail-overline" id="detail-en">THE WHOLE PICTURE</span><h2 id="detail-title">一城水色 · 千年姑苏</h2><p id="detail-description">从粉墙黛瓦到湖畔新城，转动这座小小的苏州，发现属于你的江南一角。</p></div><div class="intro-buttons"><button class="walk-button" id="walk">开启漫游 ${icon('arrow-up-right')}</button><button class="tour-button" id="tour" title="自动游览六处风景" aria-label="自动游览" aria-pressed="false">${icon('play')}</button></div><div class="tour-caption">步入街巷，听见水乡的呼吸。</div></aside>
  <div class="compass"><span>N</span><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="17" stroke="currentColor" opacity=".3"/><path d="M20 1V5M20 35V39M1 20H5M35 20H39" stroke="currentColor"/><g id="needle"><path d="M20 7L24 23L20 20Z" fill="#52755e"/><path d="M20 7L16 23L20 20Z" fill="#b8c6a6"/><path d="M20 33L16 23L20 25L24 23Z" fill="#b8c6a6" opacity=".6"/></g></svg><span>自由视角</span></div>
@@ -32,15 +42,55 @@ $('#app').innerHTML=`
  <div class="modal-backdrop" hidden><section class="modal" role="dialog" aria-modal="true" aria-labelledby="about-title"><button class="modal-close" aria-label="关闭">${icon('x')}</button><div class="eyebrow">AN ODE TO JIANGNAN</div><h2 id="about-title">方寸姑苏，处处江南。</h2><p>姑苏小境是一座可以探索的微缩城市。古城水巷、苏式园林、虎丘古塔与湖畔天际线，在这里相遇。</p><p>所有建筑与山水均以程序化几何构建。地标比例与空间距离经过艺术化编排，希望你放慢脚步，看看屋檐下、石桥边，藏着怎样的小风景。</p><div class="modal-line"></div><div class="modal-keys"><div><kbd>拖动</kbd> 旋转视角</div><div><kbd>滚轮</kbd> 拉近细节</div><div><kbd>N</kbd> 切换昼夜</div><div><kbd>H</kbd> 回到全景</div><div><kbd>WASD</kbd> 漫游行走</div><div><kbd>Esc</kbd> 退出漫游</div></div><div class="modal-line"></div><p style="font-size:10px;margin-bottom:0;letter-spacing:1px">以苏州为灵感的艺术缩景 · 非实测地理模型</p></section></div>
  <div class="loading"><div class="loading-title">姑苏小境</div><div class="loading-sub">正在铺开一卷江南</div><div class="loading-bar"></div></div>
 `;
+
+$('#scene').setAttribute('aria-label','可交互的'+city.name+'三维场景：拖动旋转，滚轮缩放');
+$('.brand').setAttribute('aria-label','回到'+city.name+'全景');
+$('.brandname').textContent=city.name+'小境';
+$('.brand-en').textContent=city.en+' IN MINIATURE';
+$('[data-nav="explore"]').textContent='探索'+city.name;
+$('.intro h1').innerHTML='把'+entry.name+'，<br><em>放在掌心。</em><span class="small-stamp">'+city.stamp+'</span>';
+$('.intro-copy').textContent=city.intro;
+$('.tour-caption').textContent='步入街巷，发现这座城市的细节。';
+$('#detail-en').textContent=places[0].en;
+$('#detail-title').textContent=city.subtitle;
+$('#detail-description').textContent=places[0].desc;
+$('.map-header span').textContent='一览'+city.name;
+$('.dock-caption').innerHTML=icon('compass')+' 城市的另一种尺度 <span style="opacity:.45">/</span> 选择一处风景';
+$('.scene-index>span').textContent='— '+String(places.length).padStart(2,'0');
+$('#coordinates').textContent=city.coordinates;
+$('.model-note').textContent='一座可以走进去的'+city.name;
+$('.walk-hud>span').textContent=city.name+'漫游';
+$('.walk-hud>span').insertAdjacentHTML('afterend','<label class="walk-start"><select id="walk-destination" aria-label="选择漫游起点">'+places.map(p=>'<option value="'+p.id+'">'+(p.id==='all'?'城市漫游起点':p.name)+'</option>').join('')+'</select></label>');
+$('#reset-walk').textContent='回到起点';
+$('.loading-title').textContent=city.name+'小境';
+$('.loading-sub').textContent='正在展开'+city.name+'的山水街巷';
+$('.modal .eyebrow').textContent='A DIFFERENT PERSPECTIVE ON '+city.en;
+$('#about-title').textContent='方寸之间，遇见'+city.name+'。';
+$('.modal p').textContent=city.intro;
+$('.modal p:last-child').textContent='以'+city.name+'为灵感的艺术缩景 · 非实测地理模型';
+$('#tour').title='自动游览'+places.length+'处视点';
+$('#taihu-text').remove();$('#jinji-text').remove();
+const mapProject=p=>[(97+p[0]*.89).toFixed(2),(62+p[1]*.69).toFixed(2)];
+const mapPolygon=points=>points.map(p=>mapProject(p).join(',')).join(' ');
+$('.map-svg').innerHTML='<rect x="11" y="12" width="172" height="99" rx="10" fill="#c6d3b9" fill-opacity=".7"/>'+
+prepared.waterAreas.map(p=>'<polygon points="'+mapPolygon(p)+'" fill="#94bcaf"/>').join('')+
+prepared.islands.map(p=>'<polygon points="'+mapPolygon(p)+'" fill="#a8be91"/>').join('')+
+prepared.paths.map(p=>'<polyline points="'+mapPolygon(p.points)+'" fill="none" stroke="#f5f4e5" stroke-width="'+Math.max(1,p.width*.38)+'"/>').join('')+
+places.slice(1).map(p=>'<g class="map-point" data-place="'+p.id+'" tabindex="0" role="button" aria-label="前往'+p.name+'"><circle cx="'+mapProject([p.pos[0],p.pos[2]])[0]+'" cy="'+mapProject([p.pos[0],p.pos[2]])[1]+'" r="6" fill="transparent"/><circle cx="'+mapProject([p.pos[0],p.pos[2]])[0]+'" cy="'+mapProject([p.pos[0],p.pos[2]])[1]+'" r="2.7" fill="#66866a" stroke="#f5f5e9" stroke-width="1.4"/></g>').join('')+
+'<g id="map-camera"><path d="M0 -7L-4 4L0 2L4 4Z" fill="#ae8158" stroke="#f4f2df" stroke-width="1"/></g>';
+
 createIcons({icons});
-const cityLink=document.createElement('a');cityLink.className='city-hub-link';cityLink.href='/cities.html';cityLink.textContent='城市小境 · 17 城漫游 ↗';document.querySelector('#app').append(cityLink);
 $('.nav-button[data-nav="about"] svg').style.cssText='display:inline;width:12px;height:12px;vertical-align:-2px;margin-left:3px';
 
 let renderer,scene,camera,controls,world;
-const params=new URLSearchParams(location.search),seed=Number(params.get('seed')||310528);
 const state={place:'all',night:0,nightTarget:0,walk:false,labels:true,tour:false,tourElapsed:0,time:0,paused:false,quality:'standard',audio:false,yaw:0,pitch:0};
 let flight=null,lastFrame=performance.now(),toastTimer,frameCounter=0,frameTotal=0,lastMetrics=performance.now(),rafMs=0,cpuMs=0,savedOrbit=null,audioContext=null,audioMaster=null,lastModalFocus=null;
 const keys=new Set(),pointer={down:false,x:0,y:0,id:null};
+const stick={x:0,y:0,id:null};
+const joystick=document.createElement('div');joystick.className='walk-joystick';joystick.setAttribute('aria-label','拖动摇杆行走');joystick.innerHTML='<span class="joystick-ring"></span><span class="joystick-thumb"></span><small>拖动行走</small>';document.querySelector('#app').append(joystick);
+function resetStick(){stick.x=0;stick.y=0;stick.id=null;joystick.querySelector('.joystick-thumb').style.transform='translate(0px,0px)';}
+function moveStick(e){if(e.pointerId!==stick.id)return;const rect=joystick.getBoundingClientRect(),x=e.clientX-rect.left-50,y=e.clientY-rect.top-50,d=Math.hypot(x,y),scale=Math.min(1,34/(d||1));stick.x=x*scale/34;stick.y=y*scale/34;joystick.querySelector('.joystick-thumb').style.transform=`translate(${x*scale}px,${y*scale}px)`;}
+joystick.addEventListener('pointerdown',e=>{e.preventDefault();stick.id=e.pointerId;joystick.setPointerCapture(e.pointerId);moveStick(e);});joystick.addEventListener('pointermove',moveStick);for(const event of ['pointerup','pointercancel','lostpointercapture'])joystick.addEventListener(event,resetStick);addEventListener('blur',resetStick);document.addEventListener('visibilitychange',resetStick);
 function toast(message){$('.toast').textContent=message;$('.toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('.toast').classList.remove('show'),3200);}
 const lerp=THREE.MathUtils.lerp,clamp=THREE.MathUtils.clamp;
 
@@ -58,7 +108,7 @@ function init() {
  const floorMat=new THREE.MeshStandardMaterial({color:'#e5ecdf',roughness:1});const floor=new THREE.Mesh(new THREE.PlaneGeometry(3000,3000),floorMat);floor.rotation.x=-Math.PI/2;floor.position.y=-7.8;floor.receiveShadow=true;scene.add(floor);
  world=buildWorld(scene,seed);
  const nightLights=[];
- for(const [x,y,z,color,power,range] of [[-25,8,-20,'#ffe0a0',160,26],[0,7,24,'#ffc48a',200,35],[-55,22,-40,'#ffd59d',230,35],[57,22,-17,'#83d2d0',330,55],[24,5,33,'#ffd8a4',100,28]]){const light=new THREE.PointLight(color,0,range,1.7);light.position.set(x,y,z);scene.add(light);nightLights.push({light,power});}
+ for(const [x,y,z,color,power,range] of places.slice(1,6).map(p=>[p.pos[0]+3,Math.max(6,p.pos[1]*.55),p.pos[2]+7,'#ffd79d',220,38])){const light=new THREE.PointLight(color,0,range,1.7);light.position.set(x,y,z);scene.add(light);nightLights.push({light,power});}
  const dayBg=new THREE.Color('#e8eee4'),nightBg=new THREE.Color('#152d35'),dayFloor=new THREE.Color('#e5ecdf'),nightFloor=new THREE.Color('#1c3740');
  let shadowNightBucket=-1;
  function lighting(dt) {
@@ -111,19 +161,24 @@ function goTo(id,fromTour=false,instant=false) {
 function setTool(action,on){const el=$(`[data-action="${action}"]`);el.classList.toggle('active',on);el.setAttribute('aria-pressed',String(on));}
 function stopTour(){state.tour=false;state.tourElapsed=0;$('#tour').classList.remove('active');$('#tour').setAttribute('aria-pressed','false');$('#tour').innerHTML=icon('play');createIcons({icons});$('#mode-label').textContent=state.walk?'街巷漫游':'自由探索';}
 function toggleTour() {
- if(state.tour){stopTour();toast('已暂停自动游览');return;}if(state.walk)exitWalk();state.tour=true;state.tourElapsed=0;$('#tour').classList.add('active');$('#tour').setAttribute('aria-pressed','true');$('#tour').innerHTML=icon('pause');createIcons({icons});$('#mode-label').textContent='循水游览';goTo('pingjiang',true);toast('游览已开启，每处停留 7 秒；拖动视角即可暂停');
+ if(state.tour){stopTour();toast('已暂停自动游览');return;}if(state.walk)exitWalk();state.tour=true;state.tourElapsed=0;$('#tour').classList.add('active');$('#tour').setAttribute('aria-pressed','true');$('#tour').innerHTML=icon('pause');createIcons({icons});$('#mode-label').textContent='循水游览';goTo(places[1].id,true);toast('游览已开启，每处停留 7 秒；拖动视角即可暂停');
 }
 function enterWalk() {
- if(state.walk)return;stopTour();flight=null;controls.autoRotate=false;setTool('rotate',false);savedOrbit={pos:camera.position.clone(),target:controls.target.clone(),place:state.place};state.walk=true;controls.enabled=false;document.body.classList.add('is-walking');$$('.nav-button').forEach(e=>e.classList.toggle('active',e.dataset.nav==='walk'));
- const p=places.find(p=>p.id===state.place);camera.position.fromArray(p.walk||places[1].walk);if(!world.isWalkable(camera.position.x,camera.position.z))camera.position.fromArray(places[1].walk);state.yaw=0;state.pitch=.04;camera.rotation.order='YXZ';camera.rotation.set(-state.pitch,state.yaw,0);camera.fov=64;resize();keys.clear();toast('WASD 行走 · 按住鼠标拖动环顾 · Esc 返回全景');
+ if(state.walk)return;resetStick();stopTour();flight=null;controls.autoRotate=false;setTool('rotate',false);savedOrbit={pos:camera.position.clone(),target:controls.target.clone(),place:state.place};state.walk=true;controls.enabled=false;document.body.classList.add('is-walking');$$('.nav-button').forEach(e=>e.classList.toggle('active',e.dataset.nav==='walk'));
+ const p=places.find(p=>p.id===state.place);camera.position.fromArray(p.walk||places[1].walk);if(!world.isWalkable(camera.position.x,camera.position.z))camera.position.fromArray(places[1].walk);$('#walk-destination').value=p.id;state.yaw=0;state.pitch=.04;camera.rotation.order='YXZ';camera.rotation.set(-state.pitch,state.yaw,0);camera.fov=64;resize();keys.clear();toast(innerWidth<=760?'左侧摇杆行走 · 右侧拖动环顾':'WASD 行走 · 拖动环顾 · 顶部可选择漫游起点');
+ aimWalk(p);
 }
 function exitWalk(restore=true) {
- if(!state.walk)return;state.walk=false;keys.clear();pointer.down=false;controls.enabled=true;document.body.classList.remove('is-walking');$$('.nav-button').forEach(e=>e.classList.toggle('active',e.dataset.nav==='explore'));camera.fov=35;camera.rotation.order='XYZ';if(restore&&savedOrbit){camera.position.copy(savedOrbit.pos);controls.target.copy(savedOrbit.target);}resize();controls.update();
+ if(!state.walk)return;state.walk=false;keys.clear();resetStick();pointer.down=false;controls.enabled=true;document.body.classList.remove('is-walking');$$('.nav-button').forEach(e=>e.classList.toggle('active',e.dataset.nav==='explore'));camera.fov=35;camera.rotation.order='XYZ';if(restore&&savedOrbit){camera.position.copy(savedOrbit.pos);controls.target.copy(savedOrbit.target);}resize();controls.update();
 }
+function aimWalk(p){const dx=p.pos[0]-camera.position.x,dz=p.pos[2]-camera.position.z;state.yaw=p.id==='all'?0:Math.atan2(-dx,-dz);state.pitch=p.id==='all'?.04:clamp(-Math.atan2(Math.min(p.height*.32,12)-1.8,Math.hypot(dx,dz)),-.45,.15);}
+function jumpWalk(id){const p=places.find(p=>p.id===id);if(!p||!state.walk)return;keys.clear();resetStick();pointer.down=false;camera.position.fromArray(p.walk);aimWalk(p);$('#walk-destination').value=id;toast('已到达'+(id==='all'?city.name+'漫游起点':p.name));}
+$('#walk-destination').addEventListener('change',e=>jumpWalk(e.target.value));
+$('#reset-walk').addEventListener('click',()=>jumpWalk('all'));
 let footPhase=0;
 function updateWalk(dt) {
- const front=(keys.has('KeyW')||keys.has('ArrowUp')?1:0)-(keys.has('KeyS')||keys.has('ArrowDown')?1:0),side=(keys.has('KeyD')||keys.has('ArrowRight')?1:0)-(keys.has('KeyA')||keys.has('ArrowLeft')?1:0);
- const length=Math.hypot(front,side)||1,speed=(keys.has('ShiftLeft')||keys.has('ShiftRight')?7.5:3.5)*dt;
+ const front=(keys.has('KeyW')||keys.has('ArrowUp')?1:0)-(keys.has('KeyS')||keys.has('ArrowDown')?1:0)-stick.y,side=(keys.has('KeyD')||keys.has('ArrowRight')?1:0)-(keys.has('KeyA')||keys.has('ArrowLeft')?1:0)+stick.x;
+ const length=Math.max(1,Math.hypot(front,side)),speed=(keys.has('ShiftLeft')||keys.has('ShiftRight')?7.5:3.5)*dt;
  const dx=(-Math.sin(state.yaw)*front+Math.cos(state.yaw)*side)*speed/length,dz=(-Math.cos(state.yaw)*front-Math.sin(state.yaw)*side)*speed/length;
  if(world.isWalkable(camera.position.x+dx,camera.position.z))camera.position.x+=dx;if(world.isWalkable(camera.position.x,camera.position.z+dz))camera.position.z+=dz;
  if(front||side)footPhase+=dt*9;camera.position.y=world.groundHeight(camera.position.x,camera.position.z)+1.8+(front||side?Math.sin(footPhase)*.035:0);camera.rotation.set(-state.pitch,state.yaw,0);
@@ -136,17 +191,15 @@ function updateLabels() {
   const visible=state.labels&&!state.walk&&vec.z<1&&vec.z>0&&x>40&&x<rect.w-70&&y>100&&y<rect.h-166&&!(rect.w>760&&x<320&&y<670);
   el.style.left=x+'px';el.style.top=(y-17)+'px';el.style.opacity=visible?'1':'0';el.style.pointerEvents=visible?'auto':'none';el.tabIndex=visible?0:-1;
  }
- for(const [id,pos] of [['taihu-text',[-62,.35,54]],['jinji-text',[62,.35,8]]]) {
-  const el=$('#'+id);vec.set(...pos).project(camera);el.style.left=((vec.x*.5+.5)*rect.w)+'px';el.style.top=((-vec.y*.5+.5)*rect.h)+'px';el.style.opacity=state.labels&&!state.walk&&state.place==='all'&&vec.z<1?'1':'0';
- }
+
  const az=state.walk?state.yaw:controls.getAzimuthalAngle();$('#needle').style.transform=`rotate(${-az*180/Math.PI}deg)`;
  const mapX=97+clamp(state.walk?camera.position.x:controls.target.x,-86,85)*.89,mapY=62+clamp(state.walk?camera.position.z:controls.target.z,-60,60)*.69;
  $('#map-camera').setAttribute('transform',`translate(${mapX} ${mapY}) rotate(${-az*180/Math.PI})`);
 }
 
-$('#day').addEventListener('click',()=>setNight(false));$('#night').addEventListener('click',()=>setNight(true));$('.brand').addEventListener('click',()=>goTo('all'));$('#walk').addEventListener('click',enterWalk);$('#exit-walk').addEventListener('click',()=>exitWalk());$('#reset-walk').addEventListener('click',()=>{camera.position.fromArray(places[1].walk);state.yaw=0;state.pitch=.04;toast('已回到平江路河畔');});$('#tour').addEventListener('click',toggleTour);
+$('#day').addEventListener('click',()=>setNight(false));$('#night').addEventListener('click',()=>setNight(true));$('.brand').addEventListener('click',()=>goTo('all'));$('#walk').addEventListener('click',enterWalk);$('#exit-walk').addEventListener('click',()=>exitWalk());$('#tour').addEventListener('click',toggleTour);
 $$('[data-place]').forEach(el=>{el.addEventListener('click',()=>goTo(el.dataset.place));if(el.tagName.toLowerCase()==='g')el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();goTo(el.dataset.place);}});});
-function openAbout(){lastModalFocus=document.activeElement;$('.modal-backdrop').hidden=false;$('.modal-close').focus();keys.clear();}
+function openAbout(){lastModalFocus=document.activeElement;$('.modal-backdrop').hidden=false;$('.modal-close').focus();keys.clear();resetStick();pointer.down=false;}
 function closeAbout(){$('.modal-backdrop').hidden=true;lastModalFocus?.focus();}
 $$('[data-nav]').forEach(el=>el.addEventListener('click',()=>el.dataset.nav==='about'?openAbout():el.dataset.nav==='walk'?enterWalk():goTo('all')));
 $('.modal-close').addEventListener('click',closeAbout);$('.modal-backdrop').addEventListener('click',e=>{if(e.target===$('.modal-backdrop'))closeAbout();});
@@ -158,7 +211,7 @@ $$('[data-action]').forEach(el=>el.addEventListener('click',async()=>{
   flight=null;const diff=camera.position.clone().sub(controls.target),dist=clamp(diff.length()*(action==='plus'?.8:1.25),8,410);camera.position.copy(controls.target).add(diff.setLength(dist));controls.update();
  }else if(action==='rotate'){if(state.walk)exitWalk();stopTour();flight=null;controls.autoRotate=!controls.autoRotate;setTool('rotate',controls.autoRotate);}
  else if(action==='labels'){state.labels=!state.labels;setTool('labels',state.labels);}
- else if(action==='capture'){renderer.render(scene,camera);const link=document.createElement('a');link.download=`姑苏小境-${places.find(p=>p.id===state.place).name}-${state.nightTarget?'夜':'昼'}.png`;link.href=renderer.domElement.toDataURL('image/png');link.click();toast('已保存此刻的江南');}
+ else if(action==='capture'){renderer.render(scene,camera);const link=document.createElement('a');link.download=`${city.name}小境-${places.find(p=>p.id===state.place).name}-${state.nightTarget?'夜':'昼'}.png`;link.href=renderer.domElement.toDataURL('image/png');link.click();toast('已保存此刻的'+city.name);}
  else if(action==='fullscreen'){try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{toast('当前窗口不支持全屏，请使用浏览器全屏功能。');}}
 }));
 $('#scene').addEventListener('pointerdown',e=>{if(!state.walk||e.button!==0)return;pointer.down=true;pointer.x=e.clientX;pointer.y=e.clientY;pointer.id=e.pointerId;$('#scene').setPointerCapture(e.pointerId);});
@@ -186,9 +239,12 @@ function quality(tier) {
 function setDebug(mode) {
  world.waterUniforms.debug.value=mode==='water-normals'?1:0;world.root.traverse(o=>{if(o.isMesh)o.material.wireframe=mode==='wireframe';});
 }
-function metrics(){return {seed,three:THREE.REVISION,backend:'WebGL2',quality:state.quality,viewport:[innerWidth,innerHeight],dpr:renderer.getPixelRatio(),place:state.place,time:+state.time.toFixed(3),night:+state.night.toFixed(3),walk:state.walk,camera:camera.position.toArray(),target:controls.target.toArray(),calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,rafFrameMs:+rafMs.toFixed(2),cpuSubmitMs:+cpuMs.toFixed(2),gpuMs:null,postprocessing:'none',renderTargets:['environment PMREM cubeUV','directional shadow map'],errors:window.__runtimeErrors||[]};}
+function metrics(){return {city:city.id,landmarks:places.slice(1).map(p=>p.name),shops:world.shops,seed,three:THREE.REVISION,backend:'WebGL2',quality:state.quality,viewport:[innerWidth,innerHeight],dpr:renderer.getPixelRatio(),place:state.place,time:+state.time.toFixed(3),night:+state.night.toFixed(3),walk:state.walk,camera:camera.position.toArray(),target:controls.target.toArray(),calls:renderer.info.render.calls,triangles:renderer.info.render.triangles,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,rafFrameMs:+rafMs.toFixed(2),cpuSubmitMs:+cpuMs.toFixed(2),gpuMs:null,postprocessing:'none',renderTargets:['environment PMREM cubeUV','directional shadow map'],errors:window.__runtimeErrors||[]};}
 function updateMetrics(){const el=$('.debug-metrics');if(el){const v=metrics();el.textContent=`seed ${seed} · Three r${v.three}\n${v.calls} calls · ${v.triangles.toLocaleString()} tris\nRAF ${v.rafFrameMs} ms · CPU ${v.cpuSubmitMs} ms\nGPU timer unavailable\n${v.geometries} geometries · ${v.textures} textures\n${v.viewport.join(' × ')} · DPR ${v.dpr}`;}}
 function mountDebug(){const el=document.createElement('div');el.className='debug-panel';el.innerHTML=`<div>VISUAL INSPECTION</div><button id="debug-pause">Pause / resume</button><button id="debug-reset">t = 0</button><br><select id="debug-mode"><option value="final">Final / no-post baseline</option value="wireframe">Geometry wireframe</option value="water-normals">Water normals</option></select><select id="debug-quality"><option value="standard">Standard</option><option value="high">High</option></select><div class="debug-metrics"></div>`;document.body.append(el);$('#debug-pause').onclick=()=>state.paused=!state.paused;$('#debug-reset').onclick=()=>{state.time=0;state.paused=true;};$('#debug-mode').onchange=e=>setDebug(e.target.value);$('#debug-quality').onchange=e=>quality(e.target.value);}
 window.__runtimeErrors=[];addEventListener('error',e=>window.__runtimeErrors.push(e.message));
-window.__SUZHOU__={ready:false,goTo:(id,instant=true)=>goTo(id,false,instant),setNight,enterWalk,exitWalk,setTime:t=>{state.time=t;state.paused=true;},resume:()=>state.paused=false,setDebug,setQuality:quality,metrics:()=>metrics(),getState:()=>({...state}),getCamera:()=>camera.position.toArray(),isWalkable:(x,z)=>world.isWalkable(x,z),capture:()=>{renderer.render(scene,camera);return renderer.domElement.toDataURL('image/png');},setCamera:(position,target)=>{flight=null;camera.position.fromArray(position);controls.target.fromArray(target);controls.update();},reset:()=>{exitWalk();setNight(false);state.night=0;state.time=0;state.paused=true;setDebug('final');goTo('all',false,true);}};
-try{init();window.__SUZHOU__.ready=true;}catch(e){console.error(e);$('.loading-title').textContent='小境暂未展开';$('.loading-sub').textContent='请使用支持 WebGL 2 的浏览器刷新重试';$('.loading-bar').style.display='none';window.__runtimeErrors.push(e.message);}
+window.__CITY__={ready:false,city:city.id,places,shops:prepared.shops,goTo:(id,instant=true)=>goTo(id,false,instant),setNight,enterWalk,exitWalk,setTime:t=>{state.time=t;state.paused=true;},resume:()=>state.paused=false,setDebug,setQuality:quality,metrics:()=>metrics(),getState:()=>({...state}),getCamera:()=>camera.position.toArray(),isWalkable:(x,z)=>world.isWalkable(x,z),capture:()=>{renderer.render(scene,camera);return renderer.domElement.toDataURL('image/png');},setCamera:(position,target)=>{flight=null;camera.position.fromArray(position);controls.target.fromArray(target);controls.update();},reset:()=>{exitWalk();setNight(false);state.night=0;state.time=0;state.paused=true;setDebug('final');goTo('all',false,true);}};
+window.__SUZHOU__=window.__CITY__;
+try{init();window.__CITY__.ready=true;}catch(e){console.error(e);$('.loading-title').textContent='小境暂未展开';$('.loading-sub').textContent='请使用支持 WebGL 2 的浏览器刷新重试';$('.loading-bar').style.display='none';window.__runtimeErrors.push(e.message);}
+
+if(import.meta.hot)import.meta.hot.dispose(()=>location.reload());

@@ -1,0 +1,1041 @@
+{
+  "viewport": [
+    1440,
+    1000
+  ],
+  "renderer": "WebGL2",
+  "results": [
+    {
+      "city": "hangzhou",
+      "passed": true,
+      "day": {
+        "city": "hangzhou",
+        "landmarks": [
+          "雷峰夕照",
+          "三潭印月",
+          "断桥 · 白堤",
+          "湖畔龙井茶舍"
+        ],
+        "shops": [
+          {
+            "name": "龙井茶舍",
+            "x": 53,
+            "z": 28,
+            "width": 9,
+            "depth": 7,
+            "door": [
+              53,
+              2.95,
+              32.7
+            ],
+            "inside": [
+              53.8,
+              2.95,
+              28.8
+            ]
+          }
+        ],
+        "seed": 310528,
+        "three": "180",
+        "backend": "WebGL2",
+        "quality": "standard",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "dpr": 1,
+        "place": "all",
+        "time": 0,
+        "night": 0,
+        "walk": false,
+        "camera": [
+          225,
+          195.99999999999997,
+          273
+        ],
+        "target": [
+          0,
+          1,
+          0
+        ],
+        "calls": 45,
+        "triangles": 209746,
+        "geometries": 38,
+        "textures": 3,
+        "rafFrameMs": 32.47,
+        "cpuSubmitMs": 1.03,
+        "gpuMs": null,
+        "postprocessing": "none",
+        "renderTargets": [
+          "environment PMREM cubeUV",
+          "directional shadow map"
+        ],
+        "errors": []
+      },
+      "night": {
+        "city": "hangzhou",
+        "landmarks": [
+          "雷峰夕照",
+          "三潭印月",
+          "断桥 · 白堤",
+          "湖畔龙井茶舍"
+        ],
+        "shops": [
+          {
+            "name": "龙井茶舍",
+            "x": 53,
+            "z": 28,
+            "width": 9,
+            "depth": 7,
+            "door": [
+              53,
+              2.95,
+              32.7
+            ],
+            "inside": [
+              53.8,
+              2.95,
+              28.8
+            ]
+          }
+        ],
+        "seed": 310528,
+        "three": "180",
+        "backend": "WebGL2",
+        "quality": "standard",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "dpr": 1,
+        "place": "all",
+        "time": 0,
+        "night": 0.993,
+        "walk": false,
+        "camera": [
+          225,
+          195.99999999999997,
+          273
+        ],
+        "target": [
+          0,
+          1,
+          0
+        ],
+        "calls": 45,
+        "triangles": 209746,
+        "geometries": 38,
+        "textures": 3,
+        "rafFrameMs": 32.79,
+        "cpuSubmitMs": 1.33,
+        "gpuMs": null,
+        "postprocessing": "none",
+        "renderTargets": [
+          "environment PMREM cubeUV",
+          "directional shadow map"
+        ],
+        "errors": []
+      },
+      "bookmarks": [
+        {
+          "id": "leifeng",
+          "name": "雷峰夕照",
+          "walk": [
+            2,
+            2.95,
+            53
+          ]
+        },
+        {
+          "id": "three-pools",
+          "name": "三潭印月",
+          "walk": [
+            -42,
+            2.95,
+            17
+          ]
+        },
+        {
+          "id": "broken-bridge",
+          "name": "断桥 · 白堤",
+          "walk": [
+            29,
+            2.95,
+            -31
+          ]
+        },
+        {
+          "id": "longjing",
+          "name": "湖畔龙井茶舍",
+          "walk": [
+            53,
+            2.95,
+            36
+          ]
+        }
+      ],
+      "movement": 4.258450000000018,
+      "safe": true
+    },
+    {
+      "city": "shanghai",
+      "passed": true,
+      "day": {
+        "city": "shanghai",
+        "landmarks": [
+          "上海中心",
+          "环球金融中心",
+          "金茂大厦",
+          "东方明珠",
+          "外滩钟楼"
+        ],
+        "shops": [
+          {
+            "name": "弄堂生煎",
+            "x": -58,
+            "z": 17,
+            "width": 9,
+            "depth": 7,
+            "door": [
+              -58,
+              2.95,
+              21.7
+            ],
+            "inside": [
+              -57.2,
+              2.95,
+              17.8
+            ]
+          }
+        ],
+        "seed": 310528,
+        "three": "180",
+        "backend": "WebGL2",
+        "quality": "standard",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "dpr": 1,
+        "place": "all",
+        "time": 0,
+        "night": 0,
+        "walk": false,
+        "camera": [
+          225,
+          195.99999999999997,
+          273
+        ],
+        "target": [
+          0,
+          1,
+          0
+        ],
+        "calls": 48,
+        "triangles": 242292,
+        "geometries": 41,
+        "textures": 3,
+        "rafFrameMs": 32.8,
+        "cpuSubmitMs": 0.78,
+        "gpuMs": null,
+        "postprocessing": "none",
+        "renderTargets": [
+          "environment PMREM cubeUV",
+          "directional shadow map"
+        ],
+        "errors": []
+      },
+      "night": {
+        "city": "shanghai",
+        "landmarks": [
+          "上海中心",
+          "环球金融中心",
+          "金茂大厦",
+          "东方明珠",
+          "外滩钟楼"
+        ],
+        "shops": [
+          {
+            "name": "弄堂生煎",
+            "x": -58,
+            "z": 17,
+            "width": 9,
+            "depth": 7,
+            "door": [
+              -58,
+              2.95,
+              21.7
+            ],
+            "inside": [
+              -57.2,
+              2.95,
+              17.8
+            ]
+          }
+        ],
+        "seed": 310528,
+        "three": "180",
+        "backend": "WebGL2",
+        "quality": "standard",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "dpr": 1,
+        "place": "all",
+        "time": 0,
+        "night": 0.993,
+        "walk": false,
+        "camera": [
+          225,
+          195.99999999999997,
+          273
+        ],
+        "target": [
+          0,
+          1,
+          0
+        ],
+        "calls": 48,
+        "triangles": 242292,
+        "geometries": 41,
+        "textures": 3,
+        "rafFrameMs": 33.87,
+        "cpuSubmitMs": 0.65,
+        "gpuMs": null,
+        "postprocessing": "none",
+        "renderTargets": [
+          "environment PMREM cubeUV",
+          "directional shadow map"
+        ],
+        "errors": []
+      },
+      "bookmarks": [
+        {
+          "id": "shanghai-tower",
+          "name": "上海中心",
+          "walk": [
+            31,
+            2.95,
+            -25
+          ]
+        },
+        {
+          "id": "world-financial-center",
+          "name": "环球金融中心",
+          "walk": [
+            69,
+            2.95,
+            -15
+          ]
+        },
+        {
+          "id": "jin-mao",
+          "name": "金茂大厦",
+          "walk": [
+            76,
+            2.95,
+            -46
+          ]
+        },
+        {
+          "id": "oriental-pearl",
+          "name": "东方明珠",
+          "walk": [
+            15,
+            2.95,
+            -18
+          ]
+        },
+        {
+          "id": "the-bund",
+          "name": "外滩钟楼",
+          "walk": [
+            -37,
+            2.95,
+            -19
+          ]
+        }
+      ],
+      "movement": 4.141550000000024,
+      "safe": true
+    },
+    {
+      "city": "nantong",
+      "passed": true,
+      "day": {
+        "city": "nantong",
+        "landmarks": [
+          "钟楼与谯楼",
+          "濠河五亭",
+          "南通博物苑",
+          "狼山塔影"
+        ],
+        "shops": [
+          {
+            "name": "蓝印布坊",
+            "x": 27,
+            "z": 8,
+            "width": 9,
+            "depth": 7,
+            "door": [
+              27,
+              2.95,
+              12.7
+            ],
+            "inside": [
+              27.8,
+              2.95,
+              8.8
+            ]
+          }
+        ],
+        "seed": 310528,
+        "three": "180",
+        "backend": "WebGL2",
+        "quality": "standard",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "dpr": 1,
+        "place": "all",
+        "time": 0,
+        "night": 0,
+        "walk": false,
+        "camera": [
+          225,
+          195.99999999999997,
+          273
+        ],
+        "target": [
+          0,
+          1,
+          0
+        ],
+        "calls": 48,
+        "triangles": 223532,
+        "geometries": 41,
+        "textures": 3,
+        "rafFrameMs": 32.72,
+        "cpuSubmitMs": 0.82,
+        "gpuMs": null,
+        "postprocessing": "none",
+        "renderTargets": [
+          "environment PMREM cubeUV",
+          "directional shadow map"
+        ],
+        "errors": []
+      },
+      "night": {
+        "city": "nantong",
+        "landmarks": [
+          "钟楼与谯楼",
+          "濠河五亭",
+          "南通博物苑",
+          "狼山塔影"
+        ],
+        "shops": [
+          {
+            "name": "蓝印布坊",
+            "x": 27,
+            "z": 8,
+            "width": 9,
+            "depth": 7,
+            "door": [
+              27,
+              2.95,
+              12.7
+            ],
+            "inside": [
+              27.8,
+              2.95,
+              8.8
+            ]
+          }
+        ],
+        "seed": 310528,
+        "three": "180",
+        "backend": "WebGL2",
+        "quality": "standard",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "dpr": 1,
+        "place": "all",
+        "time": 0,
+        "night": 0.993,
+        "walk": false,
+        "camera": [
+          225,
+          195.99999999999997,
+          273
+        ],
+        "target": [
+          0,
+          1,
+          0
+        ],
+        "calls": 48,
+        "triangles": 223532,
+        "geometries": 41,
+        "textures": 3,
+        "rafFrameMs": 33.34,
+        "cpuSubmitMs": 1,
+        "gpuMs": null,
+        "postprocessing": "none",
+        "renderTargets": [
+          "environment PMREM cubeUV",
+          "directional shadow map"
+        ],
+        "errors": []
+      },
+      "bookmarks": [
+        {
+          "id": "clock",
+          "name": "钟楼与谯楼",
+          "walk": [
+            15,
+            2.95,
+            1
+          ]
+        },
+        {
+          "id": "haopavilions",
+          "name": "濠河五亭",
+          "walk": [
+            0,
+            2.95,
+            -56
+          ]
+        },
+        {
+          "id": "museum",
+          "name": "南通博物苑",
+          "walk": [
+            -21,
+            2.95,
+            1
+          ]
+        },
+        {
+          "id": "wolfhill",
+          "name": "狼山塔影",
+          "walk": [
+            -46,
+            2.95,
+            51
+          ]
+        }
+      ],
+      "movement": 4.255649999999996,
+      "safe": true
+    },
+    {
+      "city": "wuxi",
+      "passed": true,
+      "day": {
+        "city": "wuxi",
+        "landmarks": [
+          "寄畅园",
+          "清名桥",
+          "鼋头渚",
+          "南禅寺 · 妙光塔"
+        ],
+        "shops": [
+          {
+            "name": "惠山泥人铺",
+            "x": -9,
+            "z": 3,
+            "width": 9,
+            "depth": 7,
+            "door": [
+              -9,
+              2.95,
+              7.7
+            ],
+            "inside": [
+              -8.2,
+              2.95,
+              3.8
+            ]
+          }
+        ],
+        "seed": 310528,
+        "three": "180",
+        "backend": "WebGL2",
+        "quality": "standard",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "dpr": 1,
+        "place": "all",
+        "time": 0,
+        "night": 0,
+        "walk": false,
+        "camera": [
+          225,
+          195.99999999999997,
+          273
+        ],
+        "target": [
+          0,
+          1,
+          0
+        ],
+        "calls": 50,
+        "triangles": 239242,
+        "geometries": 43,
+        "textures": 3,
+        "rafFrameMs": 33.15,
+        "cpuSubmitMs": 1.63,
+        "gpuMs": null,
+        "postprocessing": "none",
+        "renderTargets": [
+          "environment PMREM cubeUV",
+          "directional shadow map"
+        ],
+        "errors": []
+      },
+      "night": {
+        "city": "wuxi",
+        "landmarks": [
+          "寄畅园",
+          "清名桥",
+          "鼋头渚",
+          "南禅寺 · 妙光塔"
+        ],
+        "shops": [
+          {
+            "name": "惠山泥人铺",
+            "x": -9,
+            "z": 3,
+            "width": 9,
+            "depth": 7,
+            "door": [
+              -9,
+              2.95,
+              7.7
+            ],
+            "inside": [
+              -8.2,
+              2.95,
+              3.8
+            ]
+          }
+        ],
+        "seed": 310528,
+        "three": "180",
+        "backend": "WebGL2",
+        "quality": "standard",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "dpr": 1,
+        "place": "all",
+        "time": 0,
+        "night": 0.995,
+        "walk": false,
+        "camera": [
+          225,
+          195.99999999999997,
+          273
+        ],
+        "target": [
+          0,
+          1,
+          0
+        ],
+        "calls": 50,
+        "triangles": 239242,
+        "geometries": 43,
+        "textures": 3,
+        "rafFrameMs": 33.88,
+        "cpuSubmitMs": 1.39,
+        "gpuMs": null,
+        "postprocessing": "none",
+        "renderTargets": [
+          "environment PMREM cubeUV",
+          "directional shadow map"
+        ],
+        "errors": []
+      },
+      "bookmarks": [
+        {
+          "id": "jichang",
+          "name": "寄畅园",
+          "walk": [
+            -11,
+            2.95,
+            -11
+          ]
+        },
+        {
+          "id": "qingming",
+          "name": "清名桥",
+          "walk": [
+            8,
+            2.95,
+            20
+          ]
+        },
+        {
+          "id": "yuantouzhu",
+          "name": "鼋头渚",
+          "walk": [
+            -30,
+            2.95,
+            27
+          ]
+        },
+        {
+          "id": "nanchan",
+          "name": "南禅寺 · 妙光塔",
+          "walk": [
+            58,
+            2.95,
+            -12
+          ]
+        }
+      ],
+      "movement": 4.1996500000000125,
+      "safe": true
+    },
+    {
+      "city": "nanjing",
+      "passed": true,
+      "day": {
+        "city": "nanjing",
+        "landmarks": [
+          "中华门瓮城",
+          "夫子庙 · 秦淮",
+          "中山陵祭堂"
+        ],
+        "shops": [
+          {
+            "name": "秦淮书舍",
+            "x": 24,
+            "z": 0,
+            "width": 9,
+            "depth": 7,
+            "door": [
+              24,
+              2.95,
+              4.7
+            ],
+            "inside": [
+              24.8,
+              2.95,
+              0.8
+            ]
+          }
+        ],
+        "seed": 310528,
+        "three": "180",
+        "backend": "WebGL2",
+        "quality": "standard",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "dpr": 1,
+        "place": "all",
+        "time": 0,
+        "night": 0,
+        "walk": false,
+        "camera": [
+          225,
+          195.99999999999997,
+          273
+        ],
+        "target": [
+          0,
+          1,
+          0
+        ],
+        "calls": 44,
+        "triangles": 325504,
+        "geometries": 37,
+        "textures": 3,
+        "rafFrameMs": 32.43,
+        "cpuSubmitMs": 1,
+        "gpuMs": null,
+        "postprocessing": "none",
+        "renderTargets": [
+          "environment PMREM cubeUV",
+          "directional shadow map"
+        ],
+        "errors": []
+      },
+      "night": {
+        "city": "nanjing",
+        "landmarks": [
+          "中华门瓮城",
+          "夫子庙 · 秦淮",
+          "中山陵祭堂"
+        ],
+        "shops": [
+          {
+            "name": "秦淮书舍",
+            "x": 24,
+            "z": 0,
+            "width": 9,
+            "depth": 7,
+            "door": [
+              24,
+              2.95,
+              4.7
+            ],
+            "inside": [
+              24.8,
+              2.95,
+              0.8
+            ]
+          }
+        ],
+        "seed": 310528,
+        "three": "180",
+        "backend": "WebGL2",
+        "quality": "standard",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "dpr": 1,
+        "place": "all",
+        "time": 0,
+        "night": 0.993,
+        "walk": false,
+        "camera": [
+          225,
+          195.99999999999997,
+          273
+        ],
+        "target": [
+          0,
+          1,
+          0
+        ],
+        "calls": 44,
+        "triangles": 325504,
+        "geometries": 37,
+        "textures": 3,
+        "rafFrameMs": 33.34,
+        "cpuSubmitMs": 0.97,
+        "gpuMs": null,
+        "postprocessing": "none",
+        "renderTargets": [
+          "environment PMREM cubeUV",
+          "directional shadow map"
+        ],
+        "errors": []
+      },
+      "bookmarks": [
+        {
+          "id": "zhonghua",
+          "name": "中华门瓮城",
+          "walk": [
+            -58,
+            2.95,
+            8
+          ]
+        },
+        {
+          "id": "fuzimiao",
+          "name": "夫子庙 · 秦淮",
+          "walk": [
+            -8,
+            2.95,
+            10
+          ]
+        },
+        {
+          "id": "zhongshan",
+          "name": "中山陵祭堂",
+          "walk": [
+            53,
+            2.95,
+            -6
+          ]
+        }
+      ],
+      "movement": 4.196500000000036,
+      "safe": true
+    },
+    {
+      "city": "wenzhou",
+      "passed": true,
+      "day": {
+        "city": "wenzhou",
+        "landmarks": [
+          "江心东塔",
+          "江心西塔",
+          "江心寺",
+          "五马街意象"
+        ],
+        "shops": [
+          {
+            "name": "瓯江鱼丸铺",
+            "x": 18,
+            "z": 34,
+            "width": 9,
+            "depth": 7,
+            "door": [
+              18,
+              2.95,
+              38.7
+            ],
+            "inside": [
+              18.8,
+              2.95,
+              34.8
+            ]
+          }
+        ],
+        "seed": 310528,
+        "three": "180",
+        "backend": "WebGL2",
+        "quality": "standard",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "dpr": 1,
+        "place": "all",
+        "time": 0,
+        "night": 0,
+        "walk": false,
+        "camera": [
+          225,
+          195.99999999999997,
+          273
+        ],
+        "target": [
+          0,
+          1,
+          0
+        ],
+        "calls": 47,
+        "triangles": 159396,
+        "geometries": 40,
+        "textures": 3,
+        "rafFrameMs": 32.34,
+        "cpuSubmitMs": 1.8,
+        "gpuMs": null,
+        "postprocessing": "none",
+        "renderTargets": [
+          "environment PMREM cubeUV",
+          "directional shadow map"
+        ],
+        "errors": []
+      },
+      "night": {
+        "city": "wenzhou",
+        "landmarks": [
+          "江心东塔",
+          "江心西塔",
+          "江心寺",
+          "五马街意象"
+        ],
+        "shops": [
+          {
+            "name": "瓯江鱼丸铺",
+            "x": 18,
+            "z": 34,
+            "width": 9,
+            "depth": 7,
+            "door": [
+              18,
+              2.95,
+              38.7
+            ],
+            "inside": [
+              18.8,
+              2.95,
+              34.8
+            ]
+          }
+        ],
+        "seed": 310528,
+        "three": "180",
+        "backend": "WebGL2",
+        "quality": "standard",
+        "viewport": [
+          1440,
+          1000
+        ],
+        "dpr": 1,
+        "place": "all",
+        "time": 0,
+        "night": 0.994,
+        "walk": false,
+        "camera": [
+          225,
+          195.99999999999997,
+          273
+        ],
+        "target": [
+          0,
+          1,
+          0
+        ],
+        "calls": 47,
+        "triangles": 159396,
+        "geometries": 40,
+        "textures": 3,
+        "rafFrameMs": 32.8,
+        "cpuSubmitMs": 1.33,
+        "gpuMs": null,
+        "postprocessing": "none",
+        "renderTargets": [
+          "environment PMREM cubeUV",
+          "directional shadow map"
+        ],
+        "errors": []
+      },
+      "bookmarks": [
+        {
+          "id": "easttower",
+          "name": "江心东塔",
+          "walk": [
+            13,
+            2.95,
+            -29
+          ]
+        },
+        {
+          "id": "westtower",
+          "name": "江心西塔",
+          "walk": [
+            -33,
+            2.95,
+            -29
+          ]
+        },
+        {
+          "id": "jiangxin",
+          "name": "江心寺",
+          "walk": [
+            -9,
+            2.95,
+            -24
+          ]
+        },
+        {
+          "id": "wuma",
+          "name": "五马街意象",
+          "walk": [
+            -30,
+            2.95,
+            44
+          ]
+        }
+      ],
+      "movement": 4.141550000000002,
+      "safe": true
+    }
+  ]
+}
