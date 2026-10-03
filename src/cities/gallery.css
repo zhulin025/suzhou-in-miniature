@@ -10,3 +10,5 @@
 .city-card:focus-visible{outline:2px solid #a18254;outline-offset:4px}
 @media(max-width:1100px){.city-vignette{height:150px}}
 @media(max-width:760px){.atlas{padding-bottom:55px}.city-vignette{height:112px}}
+
+@media(max-width:760px){.atlas-filter nav{justify-content:flex-start;gap:4px 3px}}

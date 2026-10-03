@@ -2,7 +2,7 @@ import { catalog, cityUrl } from './catalog.js';
 import './gallery.css';
 
 let region = '全部';
-const regions = ['全部', '江南', '江海', '古都', '岭南', '长江', '海滨'];
+const regions = ['全部', ...new Set(catalog.map(city => city.region))];
 const app = document.querySelector('#app');
 
 app.innerHTML = `
@@ -12,9 +12,9 @@ app.innerHTML = `
   </header>
   <main class="atlas">
     <section class="atlas-intro">
-      <div class="atlas-kicker">17 CITIES. A THOUSAND PERSPECTIVES.</div>
-      <div class="atlas-headline"><h1>把中国，<em>放在掌心。</em></h1><p>从江南的水巷，到北方的城阙。<br>选一座城，走进它的山水与街巷。</p></div>
-      <div class="atlas-baseline"><span>一城一景 · 可旋转 · 可漫游 · 可入夜</span><span>原有苏州 + 16 座新城市</span></div>
+      <div class="atlas-kicker">${catalog.length} CITIES. A THOUSAND PERSPECTIVES.</div>
+      <div class="atlas-headline"><h1>把中国，<em>放在掌心。</em></h1><p>从江南的水巷，到雪域与沙洲。<br>选一座城，走进它的山水与街巷。</p></div>
+      <div class="atlas-baseline"><span>一城一景 · 可旋转 · 可漫游 · 可入夜</span><span>${catalog.length} 座城市 · 山河各有风景</span></div>
     </section>
     <section class="atlas-browser" aria-label="选择一座城市">
       <div class="atlas-filter">

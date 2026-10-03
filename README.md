@@ -1,6 +1,6 @@
 # 城市小境 · Cities in miniature
 
-以 Three.js 构建的 17 座城市交互微缩场景。在原版「姑苏小境」基础上，新增杭州、上海、南通、无锡、常州、南京、温州、宁波、广州、深圳、北京、山西大同、长沙、武汉、青岛、大连，每座城市有独立页面、城市地标与可进入的原创小店，支持旋转缩放、昼夜切换和步行探索。
+以 Three.js 构建的 25 座城市交互微缩场景。在原版「姑苏小境」基础上，新增杭州、上海、南通、无锡、常州、南京、温州、宁波、广州、深圳、北京、山西大同、长沙、武汉、青岛、大连，以及重庆、西安、桂林、哈尔滨、厦门、泉州、拉萨、敦煌，每座城市有独立页面、城市地标与可进入的原创小店，支持旋转缩放、昼夜切换和步行探索。
 
 原版苏州保留古城水巷、拙政园意象、虎丘塔、东方之门、金鸡湖与太湖。所有新增场景的建筑、雕塑、树木、地形、船只都是代码生成的三维几何，不依赖远程模型或用截图平面冒充建筑；招牌文字在本地绘制，环境音本地合成。
 
@@ -11,7 +11,7 @@
 项目使用 GitHub 与 Vercel 持续部署：
 
 - 在线地址：[suzhou.liuwa.xyz](https://suzhou.liuwa.xyz/)
-- 城市入口：[17 城选择页](https://suzhou.liuwa.xyz/cities.html)
+- 城市入口：[25 城选择页](https://suzhou.liuwa.xyz/cities.html)
 - 公开仓库：[zhulin025/suzhou-in-miniature](https://github.com/zhulin025/suzhou-in-miniature)
 - Vercel 项目：`suzhou-in-miniature`，已连接上述 GitHub 仓库；推送到 `main` 分支会自动更新生产部署。
 - 构建使用 Vite，运行 `npm run build`，输出目录为 `dist`。
@@ -27,7 +27,7 @@ npm run dev -- --port 5173
 
 访问 [城市选择页](http://127.0.0.1:5173/cities.html)，路径为 `/cities.html`；原版苏州仍在 [根路径 `/`](http://127.0.0.1:5173/)。`npm run build` 生成本地生产构建，`npm run preview` 预览构建。
 
-新增的 16 个独立页面：
+除苏州外的 24 个独立页面：
 
 | 城市 | 页面路径 |
 | --- | --- |
@@ -47,8 +47,16 @@ npm run dev -- --port 5173
 | 武汉 | `/cities/wuhan/` |
 | 青岛 | `/cities/qingdao/` |
 | 大连 | `/cities/dalian/` |
+| 重庆 | `/cities/chongqing/` |
+| 西安 | `/cities/xian/` |
+| 桂林 | `/cities/guilin/` |
+| 哈尔滨 | `/cities/harbin/` |
+| 厦门 | `/cities/xiamen/` |
+| 泉州 | `/cities/quanzhou/` |
+| 拉萨 | `/cities/lhasa/` |
+| 敦煌 | `/cities/dunhuang/` |
 
-城市选择页使用从各城 Three.js 场景画布截取的全景图，点击卡片即可直接进入对应城市，并支持名称筛选和地区分组。独立页面共用交互与渲染入口，按当前城市动态导入对应的区域建模模块，只构建当前场景；选择页不会预先建立 17 座城市的三维模型。
+城市选择页使用从各城 Three.js 场景画布截取的全景图，点击卡片即可直接进入对应城市，并支持名称筛选和地区分组。独立页面共用交互与渲染入口，按当前城市动态导入对应的区域建模模块，只构建当前场景；选择页不会预先建立 25 座城市的三维模型。
 
 ### 苏州城市图谱 2.0
 
@@ -123,7 +131,7 @@ ego-browser nodejs < scripts/validate-cities.mjs
 - `src/world.js`：城市布局、地标、植被、水面、动态物体、步行地面与边界。
 - `src/main.js`：光照、相机、交互、UI、检查入口。
 - `src/style.css`：桌面与手机界面、昼夜配色。
-- `cities.html`、`src/cities/gallery.js`：17 城选择页与筛选。
+- `cities.html`、`src/cities/gallery.js`：25 城选择页与筛选。
 - `cities/*/index.html`：新增城市独立 HTML 入口。
 - `src/city-entry.js`：新增城市共用的渲染、相机、昼夜、漫游、触屏摇杆和检查接口。
 - `src/cities/catalog.js`：城市信息、页面路径和区域动态导入。
@@ -136,3 +144,7 @@ ego-browser nodejs < scripts/validate-cities.mjs
 - `artifacts/validation.json`：自动验证结果与实测性能。
 
 渲染 API 参考 [Three.js 官方文档](https://threejs.org/docs/)。
+
+### 八城扩建
+
+重庆、西安、桂林、哈尔滨、厦门、泉州、拉萨、敦煌新增 32 处地标视点和 16 间原创小店。包含往返索道、雪景冰雕、独立海岛、可行走沙丘等城市特色。地点依据、模型清单及艺术化范围见 [八城扩建说明](docs/cities-expansion.md)，验收见 [扩建验证](docs/cities-expansion-validation.md)。

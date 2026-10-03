@@ -25,13 +25,15 @@ Each regional module exports `cities`: an object keyed by city slug. Each value 
 - `island(x,z,rx,rz)` adds an elliptical land patch in water; walkable.
 - `road(points,width=4,material=m.paving)` continuous ground path with edging. Ground y=1.1; path should stay on land except bridges.
 - `bridge(x,z,length=18,width=4,rotation=0,style='arch')`: center, length direction along local X; rotation radians, `flat` supported. Creates walking height support. Keep road→bridge connected; don't place buildings on approach.
+- `terrain(heightAt)`: registers a world-space height sampler for custom terrain. Geometry must use the same height function; keep roads at compatible height.
+- `onUpdate((time,night)=>{})`: registers a city-local animation callback; no changes to other cities are needed.
 - `hill(x,z,rx,rz,height)` terrain mound; returns height function; trees/structures on it must explicitly use sampled y.
 - `tree(x,z,scale=1,type='broad',y=1.1)`: types broad, pine, willow, palm, blossom. Detailed trunks/branches/crowns.
 - `house(x,z,w=7,d=6,h=4,rotation=0,options={})`: existing detailed Chinese hip roof house, collision included. options.wall, y, lantern, detail.
 - `pavilion(x,z,radius=3,y=1.1,levels=1)` open structure.
 - `pagoda(x,z,{levels:7,radius:4,storey:3.5,roof:m.roof,wall:m.wall,y:1.1,round:false})`: generic detailed multi-eave tower; customize real building topology yourself where distinctive.
 - `tower(x,z,w,d,height,{style:'glass'|'steps'|'taper'|'twist',material:m.glass,tiers:5})`: modern detailed facade geometry and collider.
-- `shop(x,z,{name:'原创店名',width:8,depth:7,kind:'tea'|'books'|'food',wall:m.wall,roof:m.roof})`: open front (+Z), interior 3D counter, shelves, goods, original text signage; walkable entrance. Add near a road with access from +Z.
+- `shop(x,z,{name:'原创店名',width:8,depth:7,kind:'tea'|'books'|'food',wall:m.wall,roof:m.roof,roofStyle:'hip'|'gable'|'flat'})`: open front (+Z), interior 3D counter, shelves, goods, original text signage; walkable entrance. Add near a road with access from +Z.
 - `sign(text,x,y,z,width=3,rotation=0)` double-sided freestanding/text board, faces +Z. Uses rasterized original text.
 - `street(points,{width:6,trees:'broad',spacing:10})`: road, lamps and optional street trees; points simple polylines, keep clear of building footprints.
 - `boat(x,z,{scale:1,rotation:0,sail:false,axis:'x'|'z',travel:8})`: animated local boat; choose travel that stays in water.

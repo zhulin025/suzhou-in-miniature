@@ -33,7 +33,7 @@ $('#app').innerHTML=`
  <div class="loading"><div class="loading-title">姑苏小境</div><div class="loading-sub">正在铺开一卷江南</div><div class="loading-bar"></div></div>
 `;
 createIcons({icons});
-const cityLink=document.createElement('a');cityLink.className='city-hub-link';cityLink.href='/cities.html';cityLink.textContent='城市小境 · 17 城漫游 ↗';document.querySelector('#app').append(cityLink);
+const cityLink=document.createElement('a');cityLink.className='city-hub-link';cityLink.href='/cities.html';cityLink.textContent='城市小境 · 25 城漫游 ↗';document.querySelector('#app').append(cityLink);
 $('.nav-button[data-nav="about"] svg').style.cssText='display:inline;width:12px;height:12px;vertical-align:-2px;margin-left:3px';
 
 let renderer,scene,camera,controls,world;

@@ -115,11 +115,19 @@ for (const entry of catalog.filter(item => item.group)) {
     const disconnectedTargets = targets.filter(target => !target.connectedFromSpawn);
     const islandTargets = pedestrian.landmarks.filter(target => ['easttower', 'westtower', 'jiangxin'].includes(target.id));
     const islandInternallyConnected = entry.id === 'wenzhou' && islandTargets.length === 3 && islandTargets.every(target => target.walkable && target.component !== null) && new Set(islandTargets.map(target => target.component)).size === 1;
+    const gulangyuTargets = targets.filter(target => ['rock', 'bagua'].includes(target.id) || target.name === '岛上书房');
+    const gulangyuConnected = entry.id === 'xiamen' && gulangyuTargets.length === 4 && gulangyuTargets.every(target => target.walkable && target.component !== null) && new Set(gulangyuTargets.map(target => target.component)).size === 1;
     for (const target of disconnectedTargets) {
       if (islandInternallyConnected && ['easttower', 'westtower', 'jiangxin'].includes(target.id)) {
         target.expectedIslandTransfer = {
           mode: 'landmark-walk-spawn',
           reason: '江心屿为瓯江中真实岛屿，与大陆不设虚构步行桥。使用漫游起点/地标入口上岛；该目标独立通过 isWalkable 且岛内三个地标相互连通。',
+        };
+      }
+      if (gulangyuConnected && gulangyuTargets.includes(target)) {
+        target.expectedIslandTransfer = {
+          mode: 'landmark-walk-spawn',
+          reason: '鼓浪屿保留独立海岛，通过日光岩或八卦楼漫游起点上岛；两个地标及书房门口、室内均验证岛内连通。',
         };
       }
     }

@@ -1,0 +1,178 @@
+{
+  "desktop": [
+    {
+      "city": "chongqing",
+      "passed": true,
+      "triangles": 155610,
+      "calls": 54,
+      "moved": 1.4581000000000013,
+      "landmarks": [
+        "洪崖洞",
+        "千厮门大桥意象",
+        "朝天门天际线",
+        "长江索道"
+      ]
+    },
+    {
+      "city": "xian",
+      "passed": true,
+      "triangles": 222180,
+      "calls": 36,
+      "moved": 1.4581000000000017,
+      "landmarks": [
+        "永宁门与城墙",
+        "钟楼",
+        "大雁塔",
+        "唐式宫阙意象"
+      ]
+    },
+    {
+      "city": "guilin",
+      "passed": true,
+      "triangles": 119246,
+      "calls": 50,
+      "moved": 1.4581000000000017,
+      "landmarks": [
+        "象鼻山",
+        "漓江峰林",
+        "日月双塔意象",
+        "漓岸街巷"
+      ]
+    },
+    {
+      "city": "harbin",
+      "passed": true,
+      "triangles": 60622,
+      "calls": 39,
+      "moved": 1.5165500000000023,
+      "landmarks": [
+        "圣索菲亚教堂",
+        "中央大街意象",
+        "冰雪大世界意象",
+        "松花江铁路桥意象"
+      ]
+    },
+    {
+      "city": "xiamen",
+      "passed": true,
+      "triangles": 121044,
+      "calls": 42,
+      "moved": 1.4581,
+      "landmarks": [
+        "鼓浪屿日光岩",
+        "八卦楼",
+        "双子塔",
+        "环岛海岸"
+      ]
+    },
+    {
+      "city": "quanzhou",
+      "passed": true,
+      "triangles": 264620,
+      "calls": 40,
+      "moved": 1.4563499999999934,
+      "landmarks": [
+        "开元寺东西塔",
+        "西街与红砖古厝",
+        "清净寺石门",
+        "洛阳桥意象"
+      ]
+    },
+    {
+      "city": "lhasa",
+      "passed": true,
+      "triangles": 101442,
+      "calls": 37,
+      "moved": 1.4615999999999971,
+      "landmarks": [
+        "布达拉宫",
+        "大昭寺意象",
+        "八廓街意象",
+        "白塔与经幡"
+      ]
+    },
+    {
+      "city": "dunhuang",
+      "passed": true,
+      "triangles": 132846,
+      "calls": 38,
+      "moved": 1.3999999999999915,
+      "landmarks": [
+        "月牙泉",
+        "鸣沙山",
+        "莫高窟九层楼意象",
+        "丝路烽燧意象"
+      ]
+    }
+  ],
+  "mobileViewport": [
+    390,
+    844
+  ],
+  "mobileAndShops": [
+    {
+      "city": "chongqing",
+      "passed": true,
+      "shop": "山城小面",
+      "joystickMoved": 1.7633511092661551
+    },
+    {
+      "city": "xian",
+      "passed": true,
+      "shop": "长安面坊",
+      "joystickMoved": 1.5041079970143447
+    },
+    {
+      "city": "guilin",
+      "passed": true,
+      "shop": "漓岸米粉",
+      "joystickMoved": 1.7586828659482783
+    },
+    {
+      "city": "harbin",
+      "passed": true,
+      "shop": "雪街面包坊",
+      "joystickMoved": 1.7599277308330499
+    },
+    {
+      "city": "xiamen",
+      "passed": true,
+      "shop": "海风沙茶面",
+      "joystickMoved": 1.658471242724906
+    },
+    {
+      "city": "quanzhou",
+      "passed": true,
+      "shop": "古巷面线糊",
+      "joystickMoved": 1.5557698897319994
+    },
+    {
+      "city": "lhasa",
+      "passed": true,
+      "shop": "日光甜茶馆",
+      "joystickMoved": 1.500995834802428
+    },
+    {
+      "city": "dunhuang",
+      "passed": true,
+      "shop": "沙洲面馆",
+      "joystickMoved": 1.5025519159083867
+    }
+  ],
+  "note": "Mobile testing uses browser viewport and touch emulation, not physical devices.",
+  "gallery": {
+    "cards": 25,
+    "validImages": 25,
+    "noCanvas": true,
+    "searchDirectEntry": true,
+    "regionFilter": true,
+    "mobileDirectEntry": true
+  },
+  "legacyRegression": {
+    "suzhouReady": true,
+    "hangzhouReady": true,
+    "geometryCities": 24,
+    "geometryPassed": 24,
+    "blockedPathSamples": 0
+  }
+}

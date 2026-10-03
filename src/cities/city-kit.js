@@ -5,6 +5,7 @@ const inside=(x,z,pts)=>{let yes=false;for(let i=0,j=pts.length-1;i<pts.length;j
 const ellipse=(x,z,rx,rz)=>Array.from({length:64},(_,i)=>[x+rx*Math.cos(i/64*Math.PI*2),z+rz*Math.sin(i/64*Math.PI*2)]);
 
 export function createCityContext(scene,definition,seed=310528){
+ const animations=[];
  const root=new THREE.Group();root.name=definition.name+' miniature';scene.add(root);
  const b=new ModelBuilder(root), random=rng(seed), materials=new Map(), m={}, colliders=[],waterAreas=[],islands=[],hills=[],crossings=[],paths=[],landmarks=[],boats=[],shops=[],lamps=[];
  const material=(name,color,roughness=.8,metalness=0)=>{if(materials.has(name))return materials.get(name);const mat=new THREE.MeshStandardMaterial({color,roughness,metalness});mat.name=name;materials.set(name,mat);return mat;};
@@ -97,11 +98,15 @@ export function createCityContext(scene,definition,seed=310528){
   const texture=new THREE.DataTexture(flipped,512,128);texture.colorSpace=THREE.SRGBColorSpace;texture.needsUpdate=true;texture.minFilter=THREE.LinearFilter;
   const mat=new THREE.MeshStandardMaterial({map:texture,roughness:.8,side:THREE.DoubleSide});const mesh=new THREE.Mesh(new THREE.PlaneGeometry(width,width/4),mat);mesh.position.set(x,y,z);mesh.rotation.y=rotation;root.add(mesh);
  }
- function shop(x,z,{name='城市小店',width=8,depth=7,kind='tea',wall=m.wall,roof:roofMat=m.roof}={}){
+ function shop(x,z,{name='城市小店',width=8,depth=7,kind='tea',wall=m.wall,roof:roofMat=m.roof,roofStyle='hip'}={}){
   const w=width,d=depth;b.box(m.paving,x,1.16,z,w+.6,.12,d+.6);
   for(const side of [-1,1]){b.box(wall,x+side*w/2,3.15,z,.3,4.2,d);solid(x+side*w/2,z,.4,d);}
   b.box(wall,x,3.15,z-d/2,w,4.2,.3);solid(x,z-d/2,w,.4);
-  b.box(m.wood,x,4.9,z+d/2,w,.45,.3);roof(b,{...m,roof:roofMat},x,5.2,z,w+1.2,d+1.3,1.75,0,true);
+  b.box(m.wood,x,4.9,z+d/2,w,.45,.3);if(roofStyle==='flat'){
+   b.box(wall,x,5.3,z,w+.7,.4,d+.7);for(const side of [-1,1])b.box(m.redwood,x,5.65,z+side*d/2,w+.5,.35,.3);
+  }else if(roofStyle==='gable'){
+   const s=new THREE.Shape();s.moveTo(-w/2-.5,0);s.lineTo(0,2.2);s.lineTo(w/2+.5,0);s.closePath();const g=new THREE.ExtrudeGeometry(s,{depth:d+1,bevelEnabled:false});b.add(g,roofMat,x,5.2,z-d/2-.5);g.dispose();
+  }else roof(b,{...m,roof:roofMat},x,5.2,z,w+1.2,d+1.3,1.75,0,true);
   sign(name,x,4.55,z+d/2+.18,w*.77);
   b.box(m.wood,x-1.6,1.95,z-1.3,w*.55,1.6,1.1);solid(x-1.6,z-1.3,w*.55,1.1);
   for(const side of [-1,1])for(let j=0;j<3;j++){
@@ -139,10 +144,10 @@ export function createCityContext(scene,definition,seed=310528){
   const places=[{id:'all',name:definition.name+'全景',en:definition.en+' IN MINIATURE',tag:definition.subtitle,desc:definition.intro,pos:[0,0,0],camera:[225,196,273],target:[0,1,0],walk:defaultSpawn,icon:'globe',coord:definition.coordinates},...landmarks];
   const birdGeo=new THREE.BufferGeometry();birdGeo.setAttribute('position',new THREE.Float32BufferAttribute([-.8,.12,0,0,0,.15,0,0,-.15,0,0,-.15,0,0,.15,.8,.12,0],3));birdGeo.computeVertexNormals();const birds=new THREE.Group(),birdMat=new THREE.MeshBasicMaterial({color:'#526d61',side:THREE.DoubleSide});for(let j=0;j<8;j++){const bird=new THREE.Mesh(birdGeo,birdMat);bird.position.set((j%4)*2.4,Math.sin(j),Math.floor(j/4)*3.5);birds.add(bird);}root.add(birds);
   return {root,materials:m,waterUniforms,boats,birds,colliders,places,shops,waterAreas,islands,paths,landmarks,isWalkable,groundHeight,safePoint,seed,
-   update(time,night){waterUniforms.time.value=time;m.window.emissiveIntensity=night*2;m.citylight.emissiveIntensity=night*2.6;m.lamp.emissiveIntensity=night*3.5;m.lantern.emissiveIntensity=night*3;for(const [j,item]of boats.entries()){item.group.position[item.axis]=(item.axis==='x'?item.x:item.z)+Math.sin(time*.06+j)*item.travel;item.group.position.y=.43+Math.sin(time*.8+j)*.035;item.group.rotation.z=Math.sin(time*.5+j)*.015;}birds.position.set(Math.sin(time*.03)*40,42,Math.cos(time*.03)*30);birds.rotation.y=-time*.03;birds.children.forEach((o,j)=>o.rotation.z=Math.sin(time*3+j)*.12);},
+   update(time,night){animations.forEach(fn=>fn(time,night));waterUniforms.time.value=time;m.window.emissiveIntensity=night*2;m.citylight.emissiveIntensity=night*2.6;m.lamp.emissiveIntensity=night*3.5;m.lantern.emissiveIntensity=night*3;for(const [j,item]of boats.entries()){item.group.position[item.axis]=(item.axis==='x'?item.x:item.z)+Math.sin(time*.06+j)*item.travel;item.group.position.y=.43+Math.sin(time*.8+j)*.035;item.group.rotation.z=Math.sin(time*.5+j)*.015;}birds.position.set(Math.sin(time*.03)*40,42,Math.cos(time*.03)*30);birds.rotation.y=-time*.03;birds.children.forEach((o,j)=>o.rotation.z=Math.sin(time*3+j)*.12);},
   };
  }
- return {THREE,b,m,root,random,material,local,solid,water,lake,island,road,bridge,hill,tree,house,pavilion,pagoda,tower,shop,sign,street,boat,landmark,finish,isWalkable,groundHeight};
+ return {THREE,b,m,root,random,material,local,solid,onUpdate:fn=>animations.push(fn),terrain:fn=>hills.push(fn),water,lake,island,road,bridge,hill,tree,house,pavilion,pagoda,tower,shop,sign,street,boat,landmark,finish,isWalkable,groundHeight};
 }
 
 export function buildCityWorld(scene,definition,seed){const ctx=createCityContext(scene,definition,seed);definition.build(ctx);return ctx.finish();}

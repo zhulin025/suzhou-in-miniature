@@ -16,9 +16,17 @@ export const catalog = [
  {id:'wuhan',name:'武汉',en:'WUHAN',region:'长江',group:'metropolis',subtitle:'两江襟带 · 黄鹤凌空',motif:'pagoda',tone:'#9b9d73',features:'黄鹤楼 / 长江大桥 / 晴川阁 / 江汉江岸'},
  {id:'qingdao',name:'青岛',en:'QINGDAO',region:'海滨',group:'north',subtitle:'红瓦绿树 · 碧海白帆',motif:'sail',tone:'#7a9caa',features:'栈桥回澜阁 / 五月的风 / 圣弥厄尔教堂 / 八大关'},
  {id:'dalian',name:'大连',en:'DALIAN',region:'海滨',group:'north',subtitle:'星海长桥 · 北方海岸',motif:'bridge',tone:'#7c99a4',features:'星海湾大桥 / 星海广场 / 灯塔 / 俄式街区'},
+ {id:'chongqing',name:'重庆',en:'CHONGQING',region:'长江',group:'expansion',subtitle:'两江灯火 · 立体山城',tone:'#789383',features:'洪崖洞 / 千厮门大桥 / 朝天门 / 长江索道'},
+ {id:'xian',name:'西安',en:'XIAN',region:'古都',group:'expansion',subtitle:'城阙长安 · 雁塔晨光',tone:'#aaa17e',features:'永宁门 / 钟楼 / 大雁塔 / 唐式宫阙'},
+ {id:'guilin',name:'桂林',en:'GUILIN',region:'山水',group:'expansion',subtitle:'漓江清影 · 千峰入画',tone:'#77a28c',features:'象鼻山 / 漓江峰林 / 日月双塔 / 漓岸街巷'},
+ {id:'harbin',name:'哈尔滨',en:'HARBIN',region:'冰雪',group:'expansion',subtitle:'松江雪霁 · 冰城灯影',tone:'#9cb9c2',features:'索菲亚教堂 / 中央大街 / 冰雪大世界意象 / 铁路桥'},
+ {id:'xiamen',name:'厦门',en:'XIAMEN',region:'海滨',group:'expansion',subtitle:'鹭岛海风 · 红瓦琴声',tone:'#7fa9ad',features:'日光岩 / 八卦楼 / 双子塔 / 环岛海岸'},
+ {id:'quanzhou',name:'泉州',en:'QUANZHOU',region:'闽南',group:'expansion',subtitle:'刺桐双塔 · 红砖海丝',tone:'#ac8974',features:'开元寺东西塔 / 西街 / 清净寺 / 洛阳桥'},
+ {id:'lhasa',name:'拉萨',en:'LHASA',region:'高原',group:'expansion',subtitle:'日光宫城 · 高原清风',tone:'#b29e83',features:'布达拉宫 / 大昭寺意象 / 八廓街 / 白塔经幡'},
+ {id:'dunhuang',name:'敦煌',en:'DUNHUANG',region:'丝路',group:'expansion',subtitle:'沙海月泉 · 千年丝路',tone:'#b9a174',features:'月牙泉 / 鸣沙山 / 莫高窟意象 / 丝路烽燧'},
 ];
 export const cityUrl=id=>id==='suzhou'?'/':`/cities/${id}/`;
-export const loaders={jiangnan:()=>import('./jiangnan.js'),metropolis:()=>import('./metropolis.js'),north:()=>import('./north.js')};
+export const loaders={jiangnan:()=>import('./jiangnan.js'),metropolis:()=>import('./metropolis.js'),north:()=>import('./north.js'),expansion:()=>import('./expansion.js')};
 
 // Original vector vignettes for navigation; city scenes themselves use real geometry.
 export function vignette(motif='pagoda',tone='#819677'){
